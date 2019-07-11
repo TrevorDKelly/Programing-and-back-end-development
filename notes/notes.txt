@@ -1,0 +1,85 @@
+Methods **********************************
+
+
+Vocab ************************************
+	
+	-Boolean
+		Only purpose is to convey a true or false value
+
+	-Conditional Operators
+		Comparison Operators -- &&  ,  | |
+		Short Circuiting
+			Comparison operators return their value (true or false) one they are certain of it
+				Ex.   if  true || ERROR => true  -- the error is never reached
+		Everything is true except false and nil
+	
+	-Procedural Way / Imperitive Way
+		Step by step logic a program needs to follow, the flow written out
+	Declaritive Way
+		using methods to abstract away some of the flow of logic
+	EX. using the each method vs making a flow chart that details each loop
+	
+	-yaml
+		configuration file type
+		To Use
+			at top put
+				require 'yaml'
+			to parse in a file put
+				VARIABLE_NAME = YAML.load_file('example_file.yml')
+			
+
+	
+Psudo Code *******************************
+	
+	START            Start the program
+	SET              Set a variable
+	GET              Get input from user
+	PRINT            display output to user
+	READ             retreive value from variable
+	IF/ELSE IF/ELSE  show conditional branches
+	WHILE            show looping logic
+	SUBPROCESS			 infers other sudocode has handled the logic
+	END              end program
+	
+	
+	
+	
+RuboCop **********************************
+  https://launchschool.com/lessons/a0f3cd44/assignments/8e770c8a
+	
+	analizes code for mistakes in convention or coding errors
+	
+	TO RUN
+		in comand line => rubocop file_name.rb
+		
+	The Return
+		example => hello.rb:1:13:C: message containg the error
+		  means => file : row : column : error code : message
+		
+		Codes 
+			C => convention => styling of code
+			W => warning
+			E => error
+			F => fatal error
+			
+	To Configure
+		
+		It will look for a .rubocop.yml file in the current directory 
+			then recusively through the parent directories
+		Try not to nest these files
+		
+		
+		
+Pry ******************************
+
+	Debugging tool that allows you to stop a program and check the valuses of all
+	variables at that point. 
+	
+	To Use
+		at start of program put 
+			require 'pry'
+		at the stop point you want put
+			binding.pry
+		to exit type
+			exit-program
+			

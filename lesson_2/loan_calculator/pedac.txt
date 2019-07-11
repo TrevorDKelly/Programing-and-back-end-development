@@ -1,0 +1,46 @@
+Car Loan Calculator
+
+Problem
+  Input:
+    Loan Amount - dollars
+    APR - %
+    Duration - years
+    Monthly monthly payments amount - after calculation
+  Output:
+    Loan duration in months
+    Monthly interest rate
+    minimum monthly payment
+    paid in interest
+  
+  Create a program to calculate a car loan based on loan amount, APR, and loan duration.
+  output the duration in months and the monthly interest rate
+  
+Examples 
+  
+  Loan amount: 100
+  apr: 10
+  duration: 3 years
+  
+  36 payments of $3.23. Monthly APR = 8.3333
+  
+  
+Data
+  loan info as hash
+  Loan amount / payments
+    float to 2 decimals
+  APR / Monthly Rate
+    float to 5 decimals
+  duration
+    float, years * 12 for months
+    
+Algorithm
+  
+  m = p * (j / (1 - (1 + j)**(-n)))
+  
+  m = monthly payment
+  p = loan amount
+  j = monthly interest rate
+  n = loan duration in months
+  
+  run for each month in the duration
+    add extra payment

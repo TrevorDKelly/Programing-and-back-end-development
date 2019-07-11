@@ -1,0 +1,26 @@
+en:
+  welcome: "Welcome to the calculator! Please enter your name \n(Entra al 'espanol' para cambiar el idioma)"
+  first_num: 'Please enter the first number:'
+  second_num: 'Please enter the second number:'
+  operator: 'Enter the operation (+, -, /, *):'
+  
+  name_error: '-- This is not a valid name --'
+  num_error: '-- Please enter an integer --'
+  operator_error: '-- Please enter either +, -, /, or * --'
+  div_by_zero: '-- You cannot divide by zero! --'
+  
+  repeat?: 'Would you like to do another calculation? Enter Y for yes'
+  
+es:
+  welcome: "¡Bienvenido a la calculadora! por favor, escriba su nombre \n(Enter 'English' to change the language)"
+  first_num: 'Por favor ingrese el primer número:'
+  second_num: 'Por favor ingrese el segundo número:'
+  operator: 'Entrar en la operacion (+, -, /, *):'
+  
+  name_error: '-- Ese no es un nombre valido --'
+  num_error: '-- Por favor ingrese un entero --'
+  operator_error: '-- Por favor ingrese +, -, /, o * --'
+  div_by_zero: '-- ¡No puedes dividir por cero! --'
+  
+  repeat?: '¿Te gustaría hacer otro cálculo? Ingrese Y para sí'
+  

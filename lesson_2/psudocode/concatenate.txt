@@ -1,0 +1,20 @@
+A method that takes an array of strings, and returns a string that is all those 
+strings concatenated together
+
+create a variable to hold the new string
+for each string in the array
+  add string to the new string variable
+  
+
+START
+  
+  SET string = nil
+  
+  WHILE iteration < array length
+    SET string = string + value at iteration spot in the array
+    iteration +=1
+    
+  PRINT string
+  
+END
+  

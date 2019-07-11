@@ -1,0 +1,17 @@
+A method that takes an array of integers, and returns a new array with every other element
+
+iterate through the array with index values
+add odd numbered indexes to a new variable
+return then new variable
+
+START
+
+  WHILE iterator < array length
+    IF iterator is odd
+      SET every_other = every_other + iterator spot in array
+    ELSE
+      next
+      
+  PRINT every_other
+  
+END

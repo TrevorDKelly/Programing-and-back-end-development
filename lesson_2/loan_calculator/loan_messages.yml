@@ -1,0 +1,13 @@
+welcome: "Welcome to the loan calculator!"
+amount: "Enter the amount of the loan:"
+apr: "Enter your APR"
+duration: "Enter the loan duration in years"
+
+amount_error: "Please only enter numbers for a loan amount!"
+apr_error: "Please only enter a number as your apr!"
+duration_error: "Please only enter a number as the duration!"
+
+again?: 'Would you like to enter new information? Enter Y or N'
+again_error: 'Enter either Y or N'
+
+goodbye: "Thank you for using the calculator!"

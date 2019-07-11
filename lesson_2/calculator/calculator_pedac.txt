@@ -1,0 +1,46 @@
+PEDAC
+  Problem
+    Make a calculator
+    inputs two numbers separated by an operator ( + - / * )
+    outputs result
+    inputs all entered by user
+    Questions
+      only whole numbers? Negatives?
+      ask more than once?
+      follow up on results?
+      order of input? number number operator? number operator number?
+      maximum number?
+    mental model
+      get three inputs from a user, two numbers & an operator. calculate result
+      of the created equation
+      
+  Examples
+    input = 5 * 5
+    output = 25
+    
+    input = 10 / 0
+    output = cant devide by 0
+    
+    input = 10 - 20
+    output = -10
+    
+    input = 1000000 * 10000000
+    output = 10000000000000
+    
+  Data Structure
+    integers for numbers
+    convert 'operator' to operator  -- #public_send()
+    
+  Algorithm
+    create a number check method
+    ask user for first number
+      check for corect input
+      assign to num1 float variable
+    ask for operator
+      check for correct input
+    ask user for second number
+      check for correct input
+      assign to num2 float variable
+    
+    return num 1 (operator changed from string to operator) num2
+    

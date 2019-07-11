@@ -1,0 +1,36 @@
+main loop
+  get the info
+    loan amount
+      check
+    apr
+      check
+      change to monthly
+    duration in years
+      check
+      change to months
+      
+  variable total paid
+  calculate
+    monthly_payment = m = p * (j / (1 - (1 + j)**(-n)))
+    months = 0
+    loop
+      loan_amount *= monthly_rate
+      if monthly payment >= loan_amount
+        total_paid += loan_amount
+        month += 1
+        break
+      loan_amount -= monthly_payment
+      total_paid += monthly_payment
+      months += 1
+    end
+    
+  print
+    monthly payment amount
+    months to pay off
+    total paid
+    total interest
+    
+  run again?
+    no
+      break
+end

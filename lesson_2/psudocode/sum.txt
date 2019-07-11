@@ -1,0 +1,25 @@
+A method that returns the sum of two integers
+
+get the two integers
+check for validity
+add them together
+output result
+
+
+START
+
+  SET number1 = first number
+  IF number1 is valid
+    go on
+  ELSE IF
+    PRINT error
+    
+  SET number2 = second number
+  IF number is valid
+    go on
+  ELSE IF
+    PRINT error
+    
+  PRINT number1 + number2
+
+END
