@@ -34,3 +34,30 @@ main loop
     no
       break
 end
+
+
+*Add feature to adjust paramiters
+
+start
+  main loop
+    define variables
+    if adjusting
+      loop to pick paramiter to change
+        change
+        check
+        ask about changing another
+          yes
+            next
+          no
+            break
+      end
+    else
+      get input
+      
+    calculate
+    output
+    
+    ask to adjust or exit
+  end
+end
+

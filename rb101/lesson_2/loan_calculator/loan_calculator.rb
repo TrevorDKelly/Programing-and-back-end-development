@@ -9,7 +9,7 @@ def prompt(message)
 end
 
 def valid_number?(input)
-  /\d/.match(input) && /^\d*\.?\d*$/.match(input)
+  /\d/.match(input) && /^\d*\.?\d*$/.match(input) && input.to_f > 0
 end
 
 def monthly_payment_calculator(amount, rate, duration)
@@ -17,52 +17,113 @@ def monthly_payment_calculator(amount, rate, duration)
   amount * (rate / (1 - (1 + rate)**(duration * -1)))
 end
 
+# variables
+start_loan_amount ||= 0
+working_loan_amount = 0
+rate ||= 0
+duration ||= 0
+total_paid = 0
+monthly_payment = 0
+adjusting = false
+
 # Main program
 prompt('welcome')
 
 # main loop
 loop do
-  # variables
-  start_loan_amount = 0
-  working_loan_amount = 0
-  rate = 0
-  duration = 0
-  total_paid = 0
-  monthly_payment = 0
+  if adjusting
+    # Which paramiters to change
+    loop do
+      prompt('change')
+      prompt('change_list')
+      being_adjusted = nil
+      loop do
+        being_adjusted = gets.chomp
+        break if being_adjusted.to_i > 0 && being_adjusted.to_i < 4
+        prompt('change_error')
+        prompt('change_list')
+      end
+      case being_adjusted
+      when '1'
+        prompt('amount')
+        loop do
+          print '$'
+          start_loan_amount = gets.chomp
+          if valid_number?(start_loan_amount)
+            start_loan_amount = start_loan_amount.to_f
+            working_loan_amount = start_loan_amount
+            break
+          end
+          prompt('amount_error')
+        end
+      when '2'
+        prompt('apr')
+        loop do
+          rate = gets.chomp
+          if valid_number?(rate) && rate.to_f < 100
+            rate = rate.to_f / 12 * 0.01
+            break
+          end
+          prompt('apr_error')
+        end
+      else
+        prompt('duration')
+        loop do
+          duration = gets.chomp
+          if valid_number?(duration)
+            duration = duration.to_f * 12
+            break
+          end
+          prompt('duration_error')
+        end
+      end # End of case being_adjusted
 
-  # Get input from user
-  prompt('amount')
-  loop do
-    start_loan_amount = gets.chomp
-    if valid_number?(start_loan_amount)
-      start_loan_amount = start_loan_amount.to_f
-      working_loan_amount = start_loan_amount
-      break
+      # Change another paramiter?
+      answer = nil
+      loop do
+        prompt('change_another')
+        answer = gets.chomp.downcase
+        break if answer == 'y' || answer == 'n'
+        prompt('y_or_n_error')
+      end
+      break if answer == 'n'
     end
-    prompt('amount_error')
+  else # if new or not adjusting paramiters
+    # Get input from user
+    prompt('amount')
+    loop do
+      print '$'
+      start_loan_amount = gets.chomp
+      if valid_number?(start_loan_amount)
+        start_loan_amount = start_loan_amount.to_f
+        working_loan_amount = start_loan_amount
+        break
+      end
+      prompt('amount_error')
+    end
+
+    prompt('apr')
+    loop do
+      rate = gets.chomp
+      if valid_number?(rate) && rate.to_f < 100
+        rate = rate.to_f / 12 * 0.01
+        break
+      end
+      prompt('apr_error')
+    end
+
+    prompt('duration')
+    loop do
+      duration = gets.chomp
+      if valid_number?(duration)
+        duration = duration.to_f * 12
+        break
+      end
+      prompt('duration_error')
+    end
   end
 
-  prompt('apr')
-  loop do
-    rate = gets.chomp
-    if valid_number?(rate)
-      rate = rate.to_f / 12 * 0.01
-      break
-    end
-    prompt('apr_error')
-  end
-
-  prompt('duration')
-  loop do
-    duration = gets.chomp
-    if valid_number?(duration)
-      duration = duration.to_f * 12
-      break
-    end
-    prompt('duration_error')
-  end
-
-  # Calculate monthly rate
+  # Calculate monthly payment
   monthly_payment =
     monthly_payment_calculator(start_loan_amount, rate, duration)
 
@@ -85,23 +146,27 @@ loop do
   puts "The total you will pay is $#{total_paid.round(2)}"
   puts "The amount you will pay in interest is $#{interest_paid.round(2)}"
   puts "\n"
-  
-  # start again?
+
+  # start again, change, or exit?
   again = nil
-  prompt('again?')
+  prompt('again')
+  prompt('again_list')
   loop do
     again = gets.chomp.downcase
-    
-    if again == 'y' || again == 'n'
-      break
-    else 
-      prompt('again_error')
-    end
+    again_options = ['change', 'new', 'exit']
+    break if again_options.include?(again)
+    prompt('again_error')
   end
-  
-  unless again == 'n'
+
+  case again
+  when 'change'
+    adjusting = true
     next
+  when 'new'
+    adjusting = false
+    next
+  else
+    prompt('goodbye')
+    break
   end
-  
-  prompt('goodbye')
 end
