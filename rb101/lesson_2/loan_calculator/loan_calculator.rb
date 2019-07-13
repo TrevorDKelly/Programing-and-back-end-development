@@ -94,14 +94,19 @@ rate = 0
 duration = 0
 total_paid = 0
 monthly_payment = 0
-adjusting = false
+start_from_scratch = true
 
 # Main program
 prompt('welcome')
 
 # main loop
 loop do
-  if adjusting
+  if start_from_scratch
+    # Get input from user
+    loan_amount = aquire_loan_amount
+    rate = aquire_rate
+    duration = aquire_duration
+  else
     # Which paramiters to change
     loop do
       prompt('change')
@@ -129,17 +134,10 @@ loop do
       end
       break if answer == 'n'
     end
-  else # if new or not adjusting paramiters
-    # Get input from user
-    loan_amount = aquire_loan_amount
-    rate = aquire_rate
-    duration = aquire_duration
   end
 
   # Calculate monthly payment
-  monthly_payment = monthly_payment_calculator(loan_amount,
-                                               rate,
-                                               duration)
+  monthly_payment = monthly_payment_calculator(loan_amount, rate, duration)
 
   # Calculate total payment and interest paid
   total_paid = calculate_total_payment(loan_amount, monthly_payment, rate)
@@ -155,10 +153,10 @@ loop do
   again = change_new_or_exit
   case again
   when 'change'
-    adjusting = true
+    start_from_scratch = false
     next
   when 'new'
-    adjusting = false
+    start_from_scratch = true
     next
   else
     prompt('goodbye')
