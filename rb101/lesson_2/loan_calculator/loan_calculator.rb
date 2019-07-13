@@ -8,20 +8,90 @@ def prompt(message)
   puts "::> #{MESSAGES[message]}"
 end
 
-def valid_number?(input)
+def valid_float?(input)
   /\d/.match(input) && /^\d*\.?\d*$/.match(input) && input.to_f > 0
 end
 
-def monthly_payment_calculator(amount, rate, duration)
+def aquire_loan_amount
+  loan_amount = ''
+  prompt('amount')
+  loop do
+    print '$'
+    loan_amount = gets.chomp
+    if valid_float?(loan_amount)
+      loan_amount = loan_amount.to_f
+      break
+    end
+    prompt('amount_error')
+  end
+  loan_amount
+end
+
+def aquire_rate
+  rate = ''
+  prompt('apr')
+  loop do
+    rate = gets.chomp
+    if valid_float?(rate) && rate.to_f < 100
+      rate = rate.to_f / 12 / 100
+      break
+    end
+    prompt('apr_error')
+  end
+  rate
+end
+
+def aquire_duration
+  duration = ''
+  prompt('duration')
+  loop do
+    duration = gets.chomp
+    if valid_float?(duration)
+      duration = duration.to_f * 12
+      break
+    end
+    prompt('duration_error')
+  end
+  duration
+end
+
+def monthly_payment_calculator(loan_amount, rate, duration)
   # m = p * (j / (1 - (1 + j)**(-n)))
-  amount * (rate / (1 - (1 + rate)**(duration * -1)))
+  loan_amount * (rate / (1 - (1 + rate)**(duration * -1)))
+end
+
+def change_new_or_exit
+  again = ''
+  prompt('again')
+  prompt('again_list')
+  loop do
+    again = gets.chomp.downcase
+    again_options = ['change', 'new', 'exit']
+    break if again_options.include?(again)
+    prompt('again_error')
+  end
+  again
+end
+
+def calculate_total_payment(loan_amount, monthly_payment, rate)
+  total_paid = 0
+  loop do
+    loan_amount *= (rate + 1)
+    if loan_amount <= monthly_payment
+      total_paid += loan_amount
+      break
+    else
+      total_paid += monthly_payment
+      loan_amount -= monthly_payment
+    end
+  end
+  total_paid
 end
 
 # variables
-start_loan_amount ||= 0
-working_loan_amount = 0
-rate ||= 0
-duration ||= 0
+loan_amount = 0
+rate = 0
+duration = 0
 total_paid = 0
 monthly_payment = 0
 adjusting = false
@@ -44,38 +114,9 @@ loop do
         prompt('change_list')
       end
       case being_adjusted
-      when '1'
-        prompt('amount')
-        loop do
-          print '$'
-          start_loan_amount = gets.chomp
-          if valid_number?(start_loan_amount)
-            start_loan_amount = start_loan_amount.to_f
-            working_loan_amount = start_loan_amount
-            break
-          end
-          prompt('amount_error')
-        end
-      when '2'
-        prompt('apr')
-        loop do
-          rate = gets.chomp
-          if valid_number?(rate) && rate.to_f < 100
-            rate = rate.to_f / 12 * 0.01
-            break
-          end
-          prompt('apr_error')
-        end
-      else
-        prompt('duration')
-        loop do
-          duration = gets.chomp
-          if valid_number?(duration)
-            duration = duration.to_f * 12
-            break
-          end
-          prompt('duration_error')
-        end
+      when '1' then loan_amount = aquire_loan_amount
+      when '2' then rate = aquire_rate
+      else          duration = aquire_duration
       end # End of case being_adjusted
 
       # Change another paramiter?
@@ -90,56 +131,19 @@ loop do
     end
   else # if new or not adjusting paramiters
     # Get input from user
-    prompt('amount')
-    loop do
-      print '$'
-      start_loan_amount = gets.chomp
-      if valid_number?(start_loan_amount)
-        start_loan_amount = start_loan_amount.to_f
-        working_loan_amount = start_loan_amount
-        break
-      end
-      prompt('amount_error')
-    end
-
-    prompt('apr')
-    loop do
-      rate = gets.chomp
-      if valid_number?(rate) && rate.to_f < 100
-        rate = rate.to_f / 12 * 0.01
-        break
-      end
-      prompt('apr_error')
-    end
-
-    prompt('duration')
-    loop do
-      duration = gets.chomp
-      if valid_number?(duration)
-        duration = duration.to_f * 12
-        break
-      end
-      prompt('duration_error')
-    end
+    loan_amount = aquire_loan_amount
+    rate = aquire_rate
+    duration = aquire_duration
   end
 
   # Calculate monthly payment
-  monthly_payment =
-    monthly_payment_calculator(start_loan_amount, rate, duration)
+  monthly_payment = monthly_payment_calculator(loan_amount,
+                                               rate,
+                                               duration)
 
   # Calculate total payment and interest paid
-  loop do
-    working_loan_amount *= (rate + 1)
-    if working_loan_amount <= monthly_payment
-      total_paid += working_loan_amount
-      break
-    else
-      total_paid += monthly_payment
-      working_loan_amount -= monthly_payment
-    end
-  end
-
-  interest_paid = total_paid - start_loan_amount
+  total_paid = calculate_total_payment(loan_amount, monthly_payment, rate)
+  interest_paid = total_paid - loan_amount
 
   # Output
   puts "Your monthly payment will be $#{monthly_payment.round(2)}"
@@ -148,16 +152,7 @@ loop do
   puts "\n"
 
   # start again, change, or exit?
-  again = nil
-  prompt('again')
-  prompt('again_list')
-  loop do
-    again = gets.chomp.downcase
-    again_options = ['change', 'new', 'exit']
-    break if again_options.include?(again)
-    prompt('again_error')
-  end
-
+  again = change_new_or_exit
   case again
   when 'change'
     adjusting = true
