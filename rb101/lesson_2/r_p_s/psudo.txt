@@ -1,0 +1,41 @@
+Bonus Features
+
+adding lizard and spock
+  change to hash based winner choice
+  simplify user choice entry
+  
+track scores
+  matches of first to 5 
+  
+  
+hash for winner
+  make hash user_choice
+    rock => scissors, lizard
+    paper => rock, spock
+    scissors => paper, lizard
+    spock => rock, scissors
+    lizard => spock, paper
+  chcek for tie
+  check hash of choice
+    if hash[chioce].include(comp_choice)
+      win
+    else
+      lose
+
+simplify choice entry
+  by first 2 letters
+  get first 2
+    check
+    convert to full string
+
+track scores
+  user_wins = 0
+  comp_wins = 0
+  loop till either gets to 5
+    full program
+    display_winner to winner
+      returns computer, player, tie
+    add to win count
+    prompt winner 
+    prompt score
+  main loop play again

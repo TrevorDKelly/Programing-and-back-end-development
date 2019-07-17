@@ -75,17 +75,12 @@ end
 
 def calculate_total_payment(loan_amount, monthly_payment, rate)
   total_paid = 0
-  loop do
+  while loan_amount > monthly_payment
     loan_amount *= (rate + 1)
-    if loan_amount <= monthly_payment
-      total_paid += loan_amount
-      break
-    else
-      total_paid += monthly_payment
-      loan_amount -= monthly_payment
-    end
+    total_paid += monthly_payment
+    loan_amount -= monthly_payment
   end
-  total_paid
+  total_paid += loan_amount
 end
 
 # variables

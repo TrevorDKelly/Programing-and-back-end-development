@@ -1,0 +1,14 @@
+welcome: "Welcome to the game! The choices are:"
+choices: "| R for Rock | P for Paper | SC for Scissors | L for Lizard | SP for Spock |"
+
+wins_required: "How many wins do you want to play to? (Max of 20)"
+wins_required_error: "Oops! Please only enter a number between 1 and 20!"
+
+get_choice: "Enter your choice:"
+invalid_entry: "Oops! That's not an appropriate choice! Choose one of the below:"
+
+congrats: "Congratulations! You Won!"
+
+play_again: 'Would you like to play again?'
+
+goodbye: "Goodbye! Thanks for playing!"
