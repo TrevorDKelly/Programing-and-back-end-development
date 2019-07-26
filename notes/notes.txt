@@ -1,5 +1,57 @@
 Methods **********************************
 
+	-each
+		iterates through the collection and performs the action in the block.
+		returns the original array object holding the collection
+		EX.
+			[1, 2, 'a', false].each do |item|
+				item * 2 == 2 || item * 2 == 4 
+			end
+			=> [1, 2, 'a', false]
+		for hashes it takes in two paramiters, for the key and value
+		returns the original hash
+	-select
+		iterates through the collection and performs the action in the block.
+		returns an array of any objects that have a truthy result from the block
+		Note, it returns an array of pointers to the original objects 
+		EX.
+			[1, 2, 'a', false].select do |item|
+				item * 2 == 2 || item * 2 == 4
+			end
+			=> [1, 2]
+		for hashes it takes in two paramiters, for the key and value
+		returns a hash of the truthy key value pairs
+	-map
+		iterates through the collection and performs the action in the block.
+		returns an array of any objects that are the result of the block
+		EX.
+			[1, 2, 'a', false].map do |item|
+				item * 2 == 2 || item * 2 == 4
+			end
+			=> [true, true, false, false]
+		for hashes it takes in two paramiters, for the key and value
+		returns an array of the last run line of the block for each key value pair
+		
+			
+	-each_with_index
+		for arrays 
+			same as #each but it also takes in the index as a paramiter
+		for hashes 
+			it takes two paramiters: the key value pair as an array [k, v], and the index
+		returns the object it was called on
+		
+	-each_with_object()
+		for arrays
+			you declair an object like an array of hash when calling the method 
+			pass it two paramiters: the collection iteration and the new object
+			return is the new object
+			EX.
+				[1, 2, 3].each_with_object([]) do |iteration, new_array|
+					new_array << iteration if iteration.odd?
+				end
+				=>[1, 3]
+		for hashes
+			same but teh iteration paramiter is the key value pair as an array
 
 Vocab ************************************
 	
@@ -26,10 +78,52 @@ Vocab ************************************
 				require 'yaml'
 			to parse in a file put
 				VARIABLE_NAME = YAML.load_file('example_file.yml')
-			
+	
+	-shadowing
+		when defining a paramiter for within a block (i.e. array.each do |x|)
+		if there is a 'x' variable outside the block this will prevent access to 
+		it and only use the 'x' created locally within it
+		* try to avoid doint this *
+	
+	-Method Definition
+		when creating a method in ruby - with the 'def' keyword
+		method definition sets a scope for the method regarding access to variables
+			through paramiters and blocks
+	-Method Invocation
+		calling an existing method, one created in the program or already existing 
+		in the ruby framework
+		method invocation uses the scope set by the definition
+		
+	-Pass by value
+		when invoking a method with a variable as an argument, the method recieves a 
+		copy of the value the variable holds.
+		it can't change the value of the original variable
+	-Pass by reference
+		when invoking a method with a variavle as an argument, the method can make 
+		changes to the original value of the variable
+	-ruby is both of these
+		it will only change the original value if the method being called mutates the
+		caller. otherwise the original variable stays unchanged.
+
+	-String Interpolation
+		using #{example} within a string to return the code in the block as a string 
+		
+	-Basics of looping
+		you need:
+			a loop
+			a counter
+			a way to retrieve the curent value
+			a way to exit the loop
 
 	
 Psudo Code *******************************
+	
+	PEDAC
+		Problem
+			
+	
+	
+	
 	
 	START            Start the program
 	SET              Set a variable
