@@ -1,0 +1,55 @@
+1. Start
+2. show empty board
+3. get user move
+4. check for winner
+  a. jump to __
+5. computer moves
+6. check for winner
+  a. jump to __
+7. display updated board
+8. back to 3
+9. display someone won
+10. play again
+  a. back to 2
+11. goodbye
+
+
+joinor
+  create a method that separates an array of numbers by a character passed as an
+  argument that defaults to a comma. the last two numbers should be separated by 
+  an argument passed inthat defaults to or
+  
+  input: array
+         [separator] string
+         [last separator] string
+  output: string
+  
+  count = 0
+  loop
+    put array[count]
+    count + 1
+    break if count = array length
+    if array length - count > 1
+      put comma
+    else
+      put or
+    
+    
+keep score
+
+  main loop
+  
+    game played
+    add a tally to winner tally
+    check if winner has 5 wins
+    play aagin?
+    
+    
+check for threat
+  input: hash
+  output: integer/nil
+  
+  check each winning line for two PLAYERs and a blank
+  
+  
+      

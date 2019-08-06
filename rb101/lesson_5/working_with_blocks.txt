@@ -1,0 +1,63 @@
+example 1
+  [[1, 2], [3, 4]].each do |arr|
+    puts arr.first
+  end
+  
+  the each method is being called on the outer array which holds two arrays as
+  elements. each iterates though each element in an array so with each iteration
+  the local variable arr is given an array
+  the block puts out the result of arr.first. first returns the object at index
+  0 of the array so the first iteration puts [1,2].first # => 1
+  this is repeated for the second element of the main array => [3, 4]
+  each then returns the original array => [[1, 2], [3, 4]]
+  
+example 3
+  [[1, 2], [3, 4]].map do |arr|
+    puts arr.first
+    arr.first
+  end
+  
+  LINE   ACTION      OBJECT      SIDE EFFECT        RETURN            RETURN USED?
+   1     map      outer array      none       New Array [1, 3]       no
+   1-4   block    each sub array   none       result of arr.first    by map's return
+   2     puts     arr.first        output     nil                    no
+   2     first    each sub array   none       index 0                by puts
+   3     first    each sub array   none       index 0                for blocks return
+   
+
+Example 4
+  my_arr = [[18, 7], [3, 12]].each do |arr|
+    arr.each do |num|
+      if num > 5
+        puts num
+      end
+    end
+  end
+  
+  LINE ACTION    OBJECT              SIDE EFFECT    RETURN                RETURN USED?
+   1    =       my_arr                assignment     result of outer each   assignment
+   1    each    outer array           none           original array         is assigned to my_arr
+   1-7  block   each inner array      none           nil                    no
+   2    each    each inner array      none           original array         by outer block
+   2-6  block   each number in array  none           nil                    no
+   3    if      num                   none           true or false          determines if block is run
+   4    puts    num                   output         nil                    for inner block
+   
+   
+   
+example 5
+
+  [[1, 2], [3, 4]].map do |arr|
+    arr.map do |num|
+      num * 2
+    end
+  end
+  
+  LINE ACTION    OBJECT              SIDE EFFECT    RETURN                   RETURN USED?
+   1    map       outer array         none         new array [[2,4], [6, 8]]   no
+   1-5  block     each sub-array      none         new array each object *2    return is given to map
+   2    map       each sub array      double nums  new array with nums * 2     into new outer map array
+   2-4  block     sub array elements  double nums  each numer *2               by inner map
+   3    * 2       num                 *2           num *2                      by inner block
+   
+   
