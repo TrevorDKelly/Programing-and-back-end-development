@@ -1,0 +1,147 @@
+pregame
+1. initialize cards
+2. set card values
+3. deal sends 2 cards
+4. create display
+
+
+gameplay
+1. deal hand
+2. calculate and display player total
+3. ask to hit or stay 
+   if hit add card
+     back to 2
+   if total over 21 skip to loose
+4. show and calculate dealer hand
+5. if below 17
+   add card
+   back to 4
+6. find who won
+7. play again
+   back to 1
+8. goodbye
+
+==================================================================
+initialize cards
+  
+  hash with - face => value
+  
+  iterate through hash
+    for each of 8 suits
+      add all numbers
+        set values as number
+      add faces
+        set value as 10
+      add ace
+        set value as a holder 
+          to be used to determine 1 or 11 later
+
+==================================================================
+Deal two cards to each
+
+  initialize player hand - hash
+  initialize dealer hand - hash
+  
+  from the deck take out two random cards and put them in player hand
+  from the deck take out two random cards and put them in dealer hand
+
+============================  
+display
+  initialize display = array of 4
+  for each card created
+    if not last card
+      create card face for card
+      for each row of the card
+        add it to the string at same array index in display
+    if last card
+      top card display mthod
+      for each row of the card
+        add it to the string at same array index in display
+        
+===========================
+calculate hand value
+
+  input: hand (hash)
+  output: integer
+  
+  initialize total
+  for each card in hand
+    if not ace
+      add value to total
+    if ace
+      if total is above 10
+        add 1 to total
+      else
+        add 11 
+        
+  add ace values
+    for all aces other than first
+      add 1 to total
+    if total < 11
+      last ace adds 11
+    else
+      add 1
+    return total
+        
+  for display
+    if hand has an ace && ace is valued at 11
+      show "(or #{total with ace as 1)"
+
+==============================================
+display total
+
+  get the card display
+    on the top line add "Your total is (total)"
+===========================================================
+Hit or Stay
+
+  prompt to hit or stay and get answer
+  if hit
+    add a card to player hand
+    check for bust
+      if total over 21 
+        jump to lose
+      else
+        loop back to start
+  if stay
+    to dealer turn
+      show dealer card
+      get total
+      if under 17
+        add a card and loop back
+      if over 21
+        jump to player win
+      else 
+        stay
+        jump to compare hands
+
+================================================
+new hand visual
+  
+  give player card  
+  show card
+  give dealer card
+  show card
+  give player card
+  show card
+  give dealer card
+  hide card
+  
+==================================================
+Find Winner
+  
+  check if player bust
+    dealer won
+  check dealer bust || player blackjack
+    player won
+  compare totals
+    higher wins
+    
+================================================
+games to 5
+
+  player wins
+  dealer wins
+  
+  from winner add 1 to winners tally
+  
