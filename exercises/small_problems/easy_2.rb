@@ -1,5 +1,5 @@
 # 1
-=begin
+
   age = rand(20..200)
   
   puts "Enter a name:"
@@ -76,7 +76,7 @@
   end
   
   (1..99).each { |num| puts num if num.even? }
-=end
+
 # 8
   def calc_sum(num)
     (1..num).inject(:+)
