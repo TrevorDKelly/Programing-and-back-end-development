@@ -1,0 +1,179 @@
+FOCUS
+  call variables local variables unless they are constants
+  is what is leak?
+    ? a method definition leaks because it is its own scope 
+    ? an entirely self contained scope
+    ? leaking into other scopes like a constant into a method definition
+  Blocks and Methods can interact with each other. 
+    The level of the interaction is set at method definition and used at invocation
+  RE-READ
+    https://launchschool.com/lessons/a0f3cd44/assignments/9e9e907c
+
+language
+  method definition
+    https://launchschool.com/lessons/a0f3cd44/assignments/9e9e907c
+  method invocation
+  local variable
+    scope
+    Mutability
+    https://launchschool.com/blog/references-and-mutability-in-ruby
+    https://launchschool.com/blog/mutating-and-non-mutating-methods
+    https://launchschool.com/blog/object-passing-in-ruby
+  initialize
+  assigned
+  assignment
+  reassigned
+  block
+  method
+    argument
+    paramiter
+    return
+    call
+    invocation
+  truthiness vs boolean true
+    evaluates
+  falsiness vs boolean false
+    evaluates
+  Integer
+    Bignum & Fixnum are depricated
+    https://launchschool.com/lessons/c82cd406/assignments/1788c3a1
+  Transformation
+  
+
+
+re-do
+  variables as pointers
+  precision of language
+  
+  
+===============================================================================
+Language
+===============================================================================
+
+Variables
+  Types
+    Constants
+      These store data that never needs to be changed 
+      They can be accessed at any scope
+      Always written in all caps
+      EX
+        COIN_FLIP_OPTIONS = ['heads', 'tails']
+    
+    Local Variable
+      Follow all rules of scope
+      always written in all lower case
+      EX
+        name = 'Trevor'
+      
+    Global
+      Start with $ sign
+      Available through an entire application
+      Generaly avoided in ruby
+      
+    Class
+      Start with @@
+      accessed by instences of a class and class itself
+      must be initialized at class level
+      
+    Instance
+      start with @
+      Accessable thoughout current instance of the parent class
+      cross some scope boundries
+
+Scope
+  Where in a program a variable is available for use
+  it is determined by where it is initialized
+  this is defined by a block
+  Inner scope can access variables initialized in the outer scope
+  Outer scope CANNOT access variables initialized in an inner scope
+  the outermost scope is refered to as 'main'
+
+Nested
+  one within another
+  Nested block 
+    one block running within another
+  Nested Scope
+    When a new scope is created within an inner scope
+    a new level of scope 
+  Layers
+    how new inner scopes are defined
+  EX
+    a = 5           #=> Level 1, outer (main) scope
+    loop do         #=> Invoking a method, starts new level & new scope
+      b = 2         #=> Level 2, inner scope 
+      a.times do    #=> Invoking a method, starts new level & new scope
+        c = a * b   #=> Level 3, inner inner scope
+      end
+      break
+    end  
+    #=> local variable a is available in all level 
+    #=> local variable b is available in level 2 and 3
+    #=> local variable c is only available in level 3
+
+Block
+  piece of code following a method invocation
+  it is part of the method invocation
+  Usually delimited by curly brackets {} or do/end
+    not all do/end pairs imply a block
+    Only when directly following a method invocation
+    EXs.
+      while x < 5 do
+        * Not a block. while is not a method, it is a part of the language
+        * Same goes for if, for, case, until
+  a block is like an argument being passed to a method
+  a block creates a new scope - an inner scope
+    a = 2
+    [1, 2, 3].map { |num| num + a } #=> [3, 4, 5]
+    #=> in this, #map doen't have direct access to a (it is a method with its own scope)
+    #=> but, the block does have access to a
+
+Method Invocation / Invoke
+  using a method, from the core API or one created in a program
+  same as call
+  EX
+    array.join => invoking the join method on array
+  using the scope set by the method definition
+  
+Method Definition
+  Creating a method
+  EX
+    def do_something(with_this)
+  setting a scope for local variables, as the paramiters the method has, and
+  what the method does with those paramiters, and
+  how it interacts (if at all) with a block.
+  
+Initialize
+  Create a variable
+  
+Paramiter
+  a local variable initialized in method definition
+  that receives a value when the method is invoked
+  EXs
+    def new_method(paramiter)
+      puts paramiter
+    end
+    
+    array.each do |paramiter|
+      puts paramiter
+    end
+
+Argument
+  the value passed to a paramiter upon method invocation
+  EX
+    a = 'an argument'
+    new_method(a) #=> a is the argument passed to new_method
+    
+Variable Shadowing
+  when a paramiter being passed into a block > (a.each do |paramiter|)
+  has the same name as a local variable in an outer scope
+  the outer scope local variable becomes no longer accessable
+  Avoid Doing This
+  
+Leak
+  When a method definition has a scope that is entirely self contained
+    there is no outer or inner scope carried into it
+  only local variables passed into the method through paramiters can be acessed
+  
+Lexical Scope
+  What constant variables have
+  allows access outside the scope where a variable is defined
