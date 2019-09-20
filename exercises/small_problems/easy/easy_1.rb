@@ -1,5 +1,5 @@
 # 1
-  def repeat(str, repeats)
+  def repeat(str, times)
     while times > 0
       puts str
       times -= 1
