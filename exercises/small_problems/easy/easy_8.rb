@@ -97,10 +97,132 @@
     new_arr.flatten
   end
   
-  p substrings('abcde') == [
-  'a', 'ab', 'abc', 'abcd', 'abcde', 
-  'b', 'bc', 'bcd', 'bcde',
-  'c', 'cd', 'cde',
-  'd', 'de',
-  'e'
-]
+# 5
+  # get string
+  # return array
+  # 
+  # create palendrome? - find palemdromes
+  #   get string
+  #   return boolean
+  #   
+  #   initialize counter as 0
+  #   until counter > half string size
+  #     get string[counter] and string[-counter - 1]
+  #       if equal keep going
+  #       else return false
+  #     add 1 to counter 
+  # 
+  # substrings = get all substrings
+  # select from substrings
+  #   palendrome?
+  
+  def palendrome?(str)
+    counter = 0
+
+    while counter < str.size / 2
+      return false if str[counter] != str[(-counter) - 1]
+      counter += 1
+    end
+
+    true
+  end
+  
+  def palindromes(str)
+    alpha_chars = str.downcase.delete('^[a-z]')
+    substrings_array = substrings(alpha_chars)
+    
+    substrings_array.select { |string| (string.size > 1) && palendrome?(string) }
+  end
+  
+# 6
+  # get two numbers 
+  # return a string for all numbers between the inputs
+  # 
+  # iterate through range
+  #   if num %3 == 0
+  #     add Fizz
+  #   if num % 5 == 0
+  #     add Buzz
+  #   print num if neither
+  
+  def fizzbuzz(first, last)
+    list = []
+    (first..last).each do |num|
+      to_print = ''
+      to_print << 'Fizz' if num % 3 == 0
+      to_print << 'Buzz' if num % 5 == 0
+      list << (to_print.empty? ? num.to_s : to_print)
+    end
+    puts list.join(', ')
+  end
+  
+# 7
+  # get string
+  # return string
+  # 
+  # initialize return string
+  # iterate through characters
+  # add to return string twice
+  # return string
+  
+  def repeater(str)
+    doubled_str = ''
+    str.each_char { |char| doubled_str << char << char }
+    doubled_str
+  end
+  
+# 8
+  # get string
+  # return string
+  # 
+  # initialize constanants
+  #   all letters - vouels
+  # 
+  # double all constanants
+  #   itterate through chars
+  #     double if constanant
+  #     single if not
+  # 
+  
+  def double_consonants(str)
+    str.chars.map do |char|
+      (char.downcase =~ /[a-z&&[^aeiou]]/) ? char * 2 : char
+    end.join
+  end
+  
+# 9
+  # get integer
+  # return integer
+  # 
+  # convert input to string
+  # reverse string
+  # convert to integer
+  # output integer
+  
+  def reversed_number(int)
+    int.to_s.reverse.to_i
+  end
+  
+# 10
+  # get string
+  # return string
+  # 
+  # get middle
+  #   string size / 2
+  # add to return
+  # add middle + 1 if size is even
+  
+  def center_of(str)
+    center = str.size / 2
+    
+    middle = str[center]
+    middle.prepend(str[center - 1]) if str.size.even?
+    
+    middle
+  end
+  
+p center_of('I love ruby') == 'e'
+p center_of('Launch School') == ' '
+p center_of('Launch') == 'un'
+p center_of('Launchschool') == 'hs'
+p center_of('x') == 'x'
