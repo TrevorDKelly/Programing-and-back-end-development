@@ -83,6 +83,10 @@
     new_sentence.join(' ')
   end
   
+  entry = 'Test sentence'
+  
+  reverse_words(entry)
+  
 # 7
   # input = positive integer
   # output = string of 101010
@@ -119,6 +123,8 @@
 
     string
   end
+  
+  stringy(num)
   
 # 8
   def average(array)
