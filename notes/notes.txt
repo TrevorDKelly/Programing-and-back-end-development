@@ -170,6 +170,14 @@ ________________________________________________________________________________
 			[[1, 2, 3, 1, 1], [1, 2, 4, 9, 9]].sort
 			this see index 0 and 1 match then sorts according to index 2 and ignores the rest
 	
+	-Parallel Asignment
+		exchanging two values without needing an intermediate variable
+		EX
+			a, b = b, a
+			the values are swaped, the alt would be 
+				c = a
+				a = b
+				b = c
 __________________________________________________________________________________
 PSUDO-CODE
 __________________________________________________________________________________

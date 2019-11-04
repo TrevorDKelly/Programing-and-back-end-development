@@ -131,9 +131,13 @@
     array.sum.to_f / array.length
   end
   
+  arr = [1, 5, 20, 9]
+  
+  average(arr)
+  
 # 9
   def sum(number)
-    number.to_s.chars.map(&to_i).reduce(:+)
+    number.to_s.chars.map(&:to_i).reduce(:+)
   end
   
 # 10

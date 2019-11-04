@@ -1,13 +1,7 @@
 FOCUS
   call variables local variables unless they are constants
-  is what is leak?
-    ? a method definition leaks because it is its own scope 
-    ? an entirely self contained scope
-    ? leaking into other scopes like a constant into a method definition
-  Blocks and Methods can interact with each other. 
-    The level of the interaction is set at method definition and used at invocation
-  RE-READ
-    https://launchschool.com/lessons/a0f3cd44/assignments/9e9e907c
+  explain Indexed assignment
+  
 
 language
   method definition
@@ -80,6 +74,26 @@ Variables
       Accessable thoughout current instance of the parent class
       cross some scope boundries
 
+Collections
+  arrays and hashes
+
+Collection Element
+  each object in a collection
+    object at a[1]
+
+Element Reference
+  how to access an element in a collection
+  String
+    str[5]
+      6th element at index 5
+    str[5, 8]
+      8 elements starting at index 5
+      this is the #slice method
+  Array
+    list of elements ordered by index
+    same functions as String for reference
+    
+  
 Scope
   Where in a program a variable is available for use
   it is determined by where it is initialized
@@ -95,7 +109,7 @@ Nested
   Nested Scope
     When a new scope is created within an inner scope
     a new level of scope 
-  Layers
+  Level
     how new inner scopes are defined
   EX
     a = 5           #=> Level 1, outer (main) scope
@@ -128,17 +142,18 @@ Block
     #=> but, the block does have access to a
 
 Method Invocation / Invoke
-  using a method, from the core API or one created in a program
-  same as call
+  calling a method, from the core API or one created in a program
   EX
     array.join => invoking the join method on array
-  using the scope set by the method definition
+  using the scope set by the method definition and if the method accepts a
+  block, the block's scope adds flexibility to how the method interacts with
+  its surroundings.
   
 Method Definition
-  Creating a method
+  when we create a method in the code using the def keyword
   EX
     def do_something(with_this)
-  setting a scope for local variables, as the paramiters the method has, and
+  setting a scope for local variables, in terms of the paramiters the method has, and
   what the method does with those paramiters, and
   how it interacts (if at all) with a block.
   
@@ -177,3 +192,85 @@ Leak
 Lexical Scope
   What constant variables have
   allows access outside the scope where a variable is defined
+  
+Variable
+  variable referenecs value
+  value is assigned to variable
+  
+Indexed Assignment - #[]=
+  reassignment by index
+    a[2] = 'now this'
+  even though it uses '=' it is not reassignment. 
+    the original object (a) is mutated
+  
+= += -= *=
+  assignment operator
+  
+==
+  equivalance operator
+  
+<, >
+  less than operator, greater than operator
+
+Multi-dimentional array
+  array within an array
+  [[a, b], [c, d]]
+  
+&& operator
+  returns true if the expressions on both sides of the operator evaluate to true,
+  otherwise it returns false
+  
+|| operator
+  returns true if either the expressions on the left or the right evaluates to true.
+  returns false if both sides evaluate to false
+  
+Element Reference
+
+If
+  Statement --> the whole thing
+                Also the keyword and conditional -> (if x = y)
+  Keywords --> if, elsif, else
+  Conditional --> being evaluated to determin flow
+  Branch / Clause --> what is run when a statement evaluates to true
+  if (conditional)
+    (branch)
+  elsif
+    (branch)  
+  
+  - if modifier
+    When if follows an expresion, expression is run if what is after the if is truthy
+      return x if x < 7
+
+Loops
+  Need these 4 things
+    A Loop
+    A Counter
+    A way to retrieve curent value
+    A way to exit the loop
+    
+    
+************************************************************************************************
+************************************************************************************************
+************************************************************************************************
+
+CANNED PHRASES
+
+************************************************************************************************
+************************************************************************************************
+
+
+
+Variables as Pointers
+  - This shows how, because variables are pointers to objects, modifying an object changed what is referenced by any variable pointing to that object
+
+Map 
+  - `#map` iterates through the calling array and passes each element into the block assigning it to the paramiter, `n`.
+    `#map` returns a new, transformed array where each element is the return value of the block for that iteration.
+
+HASH
+  Each
+    - `Hash#each` iterates through the calling collection passing each key value pair into the block in turn and assigning them to the paramiters `key` and `value`.
+  Select
+    - the `Hash#select` method iterated throught the calling Hash and passes each key value pair into the block in turn assigning them to the paramiters `k` and `v`.
+      `Hash#select` returns a hash containg any key value pairs for which the block returns a truthy value.
+

@@ -1,0 +1,57 @@
+sentences: 
+  - > 
+    There was a NOUN who VERB ADJECTIVE of NOUN. one time while
+    they VERB a ADJECTIVE NOUN VERB past ADVERB and VERB his NOUN.
+  - >
+    Today I went to the zoo. I saw a ADJECTIVE NOUN jumping up and
+    ADJECTIVE in its NOUN. He VERB ADVERB through the ADJECTIVE
+    tunnel that led to its ADJECTIVE NOUN.
+  - >
+    The ADJECTIVE ADJECTIVE NOUN ADVERB VERB the ADJECTIVE ADJECTIVE
+    NOUN, who ADVERB VERB his NOUN and VERB around.
+
+parts_of_speach:
+  noun:
+    - dog
+    - cat
+    - house
+    - table
+    - cup
+    - hat
+    - bike
+    - phone
+    - glass
+    - pen
+    - sticker
+    - chair
+    - sign
+    - lightbulb
+  verb:
+    - run
+    - jump
+    - sleep
+    - read
+    - yell
+    - fly
+    - throw
+    - look
+    - buy
+    - feed
+  adverb:
+    - quickly
+    - slowly
+    - haphazardly
+    - reluctantly
+    - angerly
+    - quietly
+  adjective:
+    - large
+    - swolen
+    - undersized
+    - red
+    - meaty
+    - misunderstood
+    - obtuse
+    - brown
+    - small
+    
