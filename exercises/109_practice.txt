@@ -1,0 +1,1262 @@
+problem
+  input
+
+  return
+
+  output
+
+  restated
+  
+  questions
+
+approach
+  broad steps
+  
+
+data structures
+  strings
+    capitals
+    lower case
+    special
+    numbers
+    spaces
+  numbers
+    negative
+    positive
+    zero
+    decimals
+  arrays
+    strings
+    numbers
+    arrays
+    hashes
+  hashes
+    key
+    value
+
+algorithm
+
+loops
+  initialize before?
+  paramiters
+  initialize inside?
+  nested loop?
+  break
+
+
+
+
+
+
+
+1:
+  Given a string containing only the characters x and y, find whether 
+  there are the same number of xs and ys.
+
+  balanced("xxxyyy") => true
+  balanced("yyyxxx") => true
+  balanced("xxxyyyy") => false
+  balanced("yyxyxxyxxyyyyxxxyxyx") => true
+  balanced("xyxxxxyyyxyxxyxxyy") => false
+  balanced("") => true
+  balanced("x") => false
+  
+  
+2:
+  A number is input in computer then a new no should get printed by 
+  adding one to each of its digit. If you encounter a 9, insert a 10 
+  (don't carry over, just shift things around).
+
+  For example, 998 becomes 10109.
+  
+  
+3:
+  The game of Yahtzee is played by rolling five 6-sided dice, and 
+  scoring the results in a number of ways. You are given a Yahtzee 
+  dice roll, represented as a sorted list of 5 integers, each of 
+  which is between 1 and 6 inclusive. Your task is to find the maximum 
+  possible score for this roll in the upper section of the Yahtzee 
+  score card. Here's what that means.
+
+  For the purpose of this challenge, the upper section of Yahtzee gives 
+  you six possible ways to score a roll. 1 times the number of 1's in 
+  the roll, 2 times the number of 2's, 3 times the number of 3's, and 
+  so on up to 6 times the number of 6's. For instance, consider the roll 
+  [2, 3, 5, 5, 6]. If you scored this as 1's, the score would be 0, since
+  there are no 1's in the roll. If you scored it as 2's, the score would 
+  be 2, since there's one 2 in the roll. Scoring the roll in each of the 
+  six ways gives you the six possible scores:
+  
+  0 2 3 0 10 6
+  The maximum here is 10 (2x5), so your result should be 10.
+  
+  Examples
+  yahtzee_upper([2, 3, 5, 5, 6]) => 10
+  yahtzee_upper([1, 1, 1, 1, 3]) => 4
+  yahtzee_upper([1, 1, 1, 3, 3]) => 6
+  yahtzee_upper([1, 2, 3, 4, 5]) => 5
+  yahtzee_upper([6, 6, 6, 6, 6]) => 30
+
+
+4:
+  For the purpose of this challenge, Morse code represents every letter 
+  as a sequence of 1-4 characters, each of which is either . (dot) or 
+  - (dash). The code for the letter a is .-, for b is -..., etc. The 
+  codes for each letter a through z are:
+  
+  .- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --..
+  
+  Normally, you would indicate where one letter ends and the next begins, 
+  for instance with a space between the letters' codes, but for this challenge, 
+  just smoosh all the coded letters together into a single string consisting 
+  of only dashes and dots.
+  
+  Examples
+  smorse("sos") => "...---..."
+  smorse("daily") => "-...-...-..-.--"
+  smorse("programmer") => ".--..-.-----..-..-----..-."
+  smorse("bits") => "-.....-..."
+  smorse("three") => "-.....-..."
+  
+  
+5:
+  The nation of Examplania has the following income tax brackets:
+  
+  income cap      marginal tax rate
+    ¤10,000           0.00 (0%)
+    ¤30,000           0.10 (10%)
+   ¤100,000           0.25 (25%)
+      --              0.40 (40%)
+  If you're not familiar with how tax brackets work, see the section below for 
+  an explanation.
+  
+  Given a whole-number income amount up to ¤100,000,000, find the 
+  amount of tax owed in Examplania. Round down to a whole number of ¤.
+  
+  Examples
+  tax(0) => 0
+  tax(10000) => 0
+  tax(10009) => 0
+  tax(10010) => 1
+  tax(12000) => 200
+  tax(56789) => 8697
+  tax(1234567) => 473326
+
+
+6:
+  Inspired by this tweet, today's challenge is to calculate the additive 
+  persistence of a number, defined as how many loops you have to do summing 
+  its digits until you get a single digit number. Take an integer N:
+  
+  Add its digits
+  
+  Repeat until the result has 1 digit
+  
+  The total number of iterations is the additive persistence of N.
+  
+  Your challenge today is to implement a function that calculates the additive 
+  persistence of a number.
+  
+  Examples
+  13 -> 1
+  1234 -> 2
+  9876 -> 2
+  199 -> 3
+
+
+7:
+  Given two strings of letters, determine whether the second can be made 
+  from the first by removing one letter. The remaining letters must stay 
+  in the same order.
+  
+  Examples
+  funnel("leave", "eave") => true
+  funnel("reset", "rest") => true
+  funnel("dragoon", "dragon") => true
+  funnel("eave", "leave") => false
+  funnel("sleet", "lets") => false
+  funnel("skiff", "ski") => false
+
+
+8:
+  Given a string containing only lowercase letters, find whether every 
+  letter that appears in the string appears the same number of times. 
+  Don't forget to handle the empty string ("") correctly!
+
+  balanced_bonus("xxxyyyzzz") => true
+  balanced_bonus("abccbaabccba") => true
+  balanced_bonus("xxxyyyzzzz") => false
+  balanced_bonus("abcdefghijklmnopqrstuvwxyz") => true
+  balanced_bonus("pqq") => false
+  balanced_bonus("fdedfdeffeddefeeeefddf") => false
+  balanced_bonus("www") => true
+  balanced_bonus("x") => true
+  balanced_bonus("") => true
+  
+========================================================================================================
+  
+9:
+  I love playing D&D with my friends, and my favorite part is creating 
+  character sheets (my DM is notorious for killing us all off by level 
+  3 or so). One major part of making character sheets is rolling the 
+  character's stats. Sadly, I have lost all my dice, so I'm asking for 
+  your help to make a dice roller for me to use!
+  
+  Formal Inputs & Outputs
+  Input description
+  Your input will contain one or more lines, where each line will be in 
+  the form of "NdM"; for example:
+  
+  3d6
+  4d12
+  1d10
+  5d4
+  If you've ever played D&D you probably recognize those, but for the rest 
+  of you, this is what those mean:
+  
+  The first number is the number of dice to roll, the d just means "dice", 
+  it's just used to split up the two numbers, and the second number is how 
+  many sides the dice have. So the above example of "3d6" means "roll 3 
+  6-sided dice". Also, just in case you didn't know, in D&D, not all the 
+  dice we roll are the normal cubes. A d6 is a cube, because it's a 6-sided 
+  die, but a d20 has twenty sides, so it looks a lot closer to a ball than a cube.
+  
+  The first number, the number of dice to roll, can be any integer between 1 
+  and 100, inclusive.
+  
+  The second number, the number of sides of the dice, can be any integer 
+  between 2 and 100, inclusive.
+  
+  Output description
+  You should output the sum of all the rolls of that specified die, each on 
+  their own line. so if your input is "3d6", the output should look something like
+  
+  14
+  Just a single number, you rolled 3 6-sided dice, and they added up to 14.
+  
+  Challenge Input
+  5d12
+  6d4
+  1d2
+  1d8
+  3d6
+  4d20
+  100d100
+  Challenge Output
+  [some number between 5 and 60, probably closer to 32 or 33]
+  [some number between 6 and 24, probably around 15]
+========================================================================================================
+
+
+10:
+  5 Friends (let's call them a, b, c, d and e) are playing a game and 
+  need to keep track of the scores. Each time someone scores a point, 
+  the letter of his name is typed in lowercase. If someone loses a point, 
+  the letter of his name is typed in uppercase. Give the resulting score 
+  from highest to lowest.
+
+  Input Description
+  A series of characters indicating who scored a point. Examples:
+  
+  abcde
+  dbbaCEDbdAacCEAadcB
+  Output Description
+  The score of every player, sorted from highest to lowest. Examples:
+  
+  a:1, b:1, c:1, d:1, e:1
+  b:2, d:2, a:1, c:0, e:-2
+  Challenge Input
+  EbAAdbBEaBaaBBdAccbeebaec
+  
+========================================================================================================
+
+11:
+  No more hiding from your alarm clock! You've decided you want your 
+  computer to keep you updated on the time so you're never late again. 
+  A talking clock takes a 24-hour time and translates it into words.
+  
+  Input Description
+  
+  An hour (0-23) followed by a colon followed by the minute (0-59).
+  
+  Output Description
+  
+  The time in words, using 12-hour format followed by am or pm.
+  
+  Sample Input data
+  
+  00:00
+  01:30
+  12:05
+  14:01
+  20:29
+  21:00
+  Sample Output data
+  
+  It's twelve am
+  It's one thirty am
+  It's twelve oh five pm
+  It's two oh one pm
+  It's eight twenty nine pm
+  It's nine pm
+========================================================================================================
+
+
+12:
+  Back in middle school, I had a peculiar way of dealing with super 
+  boring classes. I would take my handy pocket calculator and play 
+  a "Game of Threes". Here's how you play it:
+  
+  First, you mash in a random large number to start with. Then, 
+  repeatedly do the following:
+  
+  If the number is divisible by 3, divide it by 3.
+  
+  If it's not, either add 1 or subtract 1 (to make it divisible by 3), 
+  then divide it by 3.
+  
+  The game stops when you reach "1".
+  
+  While the game was originally a race against myself in order to hone 
+  quick math reflexes, it also poses an opportunity for some interesting 
+  programming challenges. Today, the challenge is to create a program 
+  that "plays" the Game of Threes.
+  
+  Challenge Description
+  The input is a single number: the number at which the game starts. Write 
+  a program that plays the Threes game, and outputs a valid sequence of steps 
+  you need to take to get to 1. Each step should be output as the number you 
+  start at, followed by either -1 or 1 (if you are adding/subtracting 1 before 
+  dividing), or 0 (if you are just dividing). The last line should simply be 1.
+  
+  Input Description
+  The input is a single number: the number at which the game starts.
+  
+  100
+  Output Description
+  The output is a list of valid steps that must be taken to play the game. 
+  Each step is represented by the number you start at, followed by either 
+  -1 or 1 (if you are adding/subtracting 1 before dividing), or 0 (if you 
+  are just dividing). The last line should simply be 1.
+  
+  100 -1
+  33 0
+  11 1
+  4 -1
+  1
+  Challenge Input
+  31337357
+
+========================================================================================================
+
+13:
+  "The Alphabet Cipher", published by Lewis Carroll in 1868, describes a 
+  Vigenère cipher (thanks /u/Yadkee for the clarification) for passing secret 
+  messages. The cipher involves alphabet substitution using a shared keyword. 
+  Using the alphabet cipher to tranmit messages follows this procedure:
+  
+  You must make a substitution chart like this, where each row of the alphabet 
+  is rotated by one as each letter goes down the chart. All test cases will 
+  utilize this same substitution chart.
+  
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  A abcdefghijklmnopqrstuvwxyz
+  B bcdefghijklmnopqrstuvwxyza
+  C cdefghijklmnopqrstuvwxyzab
+  D defghijklmnopqrstuvwxyzabc
+  E efghijklmnopqrstuvwxyzabcd
+  F fghijklmnopqrstuvwxyzabcde
+  G ghijklmnopqrstuvwxyzabcdef
+  H hijklmnopqrstuvwxyzabcdefg
+  I ijklmnopqrstuvwxyzabcdefgh
+  J jklmnopqrstuvwxyzabcdefghi
+  K klmnopqrstuvwxyzabcdefghij
+  L lmnopqrstuvwxyzabcdefghijk
+  M mnopqrstuvwxyzabcdefghijkl
+  N nopqrstuvwxyzabcdefghijklm
+  O opqrstuvwxyzabcdefghijklmn
+  P pqrstuvwxyzabcdefghijklmno
+  Q qrstuvwxyzabcdefghijklmnop
+  R rstuvwxyzabcdefghijklmnopq
+  S stuvwxyzabcdefghijklmnopqr
+  T tuvwxyzabcdefghijklmnopqrs
+  U uvwxyzabcdefghijklmnopqrst
+  V vwxyzabcdefghijklmnopqrstu
+  W wxyzabcdefghijklmnopqrstuv
+  X xyzabcdefghijklmnopqrstuvw
+  Y yzabcdefghijklmnopqrstuvwx
+  Z zabcdefghijklmnopqrstuvwxy
+  Both people exchanging messages must agree on the secret keyword. To be 
+  effective, this keyword should not be written down anywhere, but memorized.
+  
+  To encode the message, first write it down.
+  
+  thepackagehasbeendelivered
+  Then, write the keyword, (for example, snitch), repeated as many times as necessary.
+  
+  snitchsnitchsnitchsnitchsn
+  thepackagehasbeendelivered
+  Now you can look up the column S in the table and follow it down until it 
+  meets the T row. The value at the intersection is the letter L. All the 
+  letters would be thus encoded.
+  
+  snitchsnitchsnitchsnitchsn
+  thepackagehasbeendelivered
+  lumicjcnoxjhkomxpkwyqogywq
+  The encoded message is now lumicjcnoxjhkomxpkwyqogywq
+  
+  To decode, the other person would use the secret keyword and the table to 
+  look up the letters in reverse.
+  
+  Input Description
+  Each input will consist of two strings, separate by a space. The first word 
+  will be the secret word, and the second will be the message to encrypt.
+  
+  snitch thepackagehasbeendelivered
+  Output Description
+  Your program should print out the encrypted message.
+  
+  lumicjcnoxjhkomxpkwyqogywq
+  Challenge Inputs
+  bond theredfoxtrotsquietlyatmidnight
+  train murderontheorientexpress
+  garden themolessnuckintothegardenlastnight
+  Challenge Outputs
+  uvrufrsryherugdxjsgozogpjralhvg
+  flrlrkfnbuxfrqrgkefckvsa
+  zhvpsyksjqypqiewsgnexdvqkncdwgtixkx
+  Bonus
+  For a bonus, also implement the decryption portion of the algorithm 
+  and try to decrypt the following messages.
+  
+  Bonus Inputs
+  cloak klatrgafedvtssdwywcyty
+  python pjphmfamhrcaifxifvvfmzwqtmyswst
+  moore rcfpsgfspiecbcc
+  Bonus Outputs
+  iamtheprettiestunicorn
+  alwayslookonthebrightsideoflife
+  foryoureyesonly
+========================================================================================================
+
+
+14:
+  There is a crisis unfolding in Reddit. For many years, Redditors have 
+  continued to evolve sh*tposting to new highs, but it seems progress has 
+  slowed in recent times. Your mission, should you choose to accept it, is to 
+  create a state of the art rektangular sh*tpost generator and bring 
+  sh*tposting into the 21st century.
+  
+  Given a word, a width and a length, you must print a rektangle with the word 
+  of the given dimensions.
+  
+  Formal Inputs & Outputs
+  Input description
+  The input is a string word, a width and a height
+  
+  Output description
+  Quality rektangles. See examples. Any orientation of the rektangle is acceptable
+  
+  Examples
+  Input: "REKT", width=1, height=1
+  
+  Output:
+  
+   R E K T
+   E     K
+   K     E
+   T K E R
+  Input: "REKT", width=2, height=2
+  
+  Output:
+  
+    T K E R E K T
+    K     E     K          
+    E     K     E
+    R E K T K E R
+    E     K     E
+    K     E     K
+    T K E R E K T
+
+
+15:
+  The user enters a number. Make a spiral that begins with 1 and starts from 
+  the top left, going towards the right, and ends with the square of that number.
+  
+  Input description
+  Let the user enter a number.
+  
+  Output description
+  Note the proper spacing in the below example. You'll need to know the 
+  number of digits in the biggest number.
+  
+  You may go for a CLI version or GUI version.
+  
+  Challenge Input
+  5
+  
+  4
+  Challenge Output
+   1  2  3  4 5
+  16 17 18 19 6
+  15 24 25 20 7
+  14 23 22 21 8
+  13 12 11 10 9
+  
+  
+  
+   1  2  3  4 
+  12 13 14  5
+  11 16 15  6
+  10  9  8  7
+  Bonus
+  As a bonus, the code could take a parameter and make a clockwise or 
+  counter-clockwise spiral.
+
+========================================================================================================
+
+16:
+  Today's challenge is inspired by the board game Scrabble. Given a set of 7 
+  letter tiles and a word, determine whether you can make the given word using 
+  the given tiles.
+  
+  Feel free to format your input and output however you like. You don't need 
+  to read from your program's input if you don't want to - you can just write 
+  a function that does the logic. I'm representing a set of tiles as a single 
+  string, but you can represent it using whatever data structure you want.
+  
+  Examples
+  scrabble("ladilmy", "daily") -> true
+  scrabble("eerriin", "eerie") -> false
+  scrabble("orrpgma", "program") -> true
+  scrabble("orppgma", "program") -> false
+  Optional Bonus 1
+  Handle blank tiles (represented by "?"). These are "wild card" tiles that 
+  can stand in for any single letter.
+  
+  scrabble("pizza??", "pizzazz") -> true
+  scrabble("piizza?", "pizzazz") -> false
+  scrabble("a??????", "program") -> true
+  scrabble("b??????", "program") -> false
+========================================================================================================
+
+========================================================================================================
+
+17:
+  Compression makes use of the fact that repeated structures are redundant, 
+  and it's more efficient to represent the pattern and the count or a reference 
+  to it. Siimilarly, we can condense a sentence by using the redundancy of 
+  overlapping letters from the end of one word and the start of the next. In 
+  this manner we can reduce the size of the sentence, even if we start to lose 
+  meaning.
+  
+  For instance, the phrase "live verses" can be condensed to "liverses".
+  
+  In this challenge you'll be asked to write a tool to condense sentences.
+  
+  Input Description
+  You'll be given a sentence, one per line, to condense. Condense where you 
+  can, but know that you can't condense everywhere. Example:
+  
+  I heard the pastor sing live verses easily.
+  Output Description
+  Your program should emit a sentence with the appropriate parts condensed away. 
+  Our example:
+  
+  I heard the pastor sing liverses easily. 
+  Challenge Input
+  Deep episodes of Deep Space Nine came on the television only after the news.
+  Digital alarm clocks scare area children.
+  Challenge Output
+  Deepisodes of Deep Space Nine came on the televisionly after the news.
+  Digitalarm clockscarea children.
+
+========================================================================================================
+
+18:
+  Write a program that outputs the first recurring character in a string.
+  
+  Formal Inputs & Outputs
+  Input Description
+  A string of alphabetical characters. Example:
+  
+  ABCDEBC
+  Output description
+  The first recurring character from the input. From the above example:
+  
+  B
+  Challenge Input
+  IKEUNFUVFV
+  PXLJOUDJVZGQHLBHGXIW
+  *l1J?)yn%R[}9~1"=k7]9;0[$
+  Bonus
+  Return the index (0 or 1 based, but please specify) where the original 
+  character is found in the string.
+
+========================================================================================================
+
+19:
+  "I before E except after C" is perhaps the most famous English spelling 
+  rule. For the purpose of this challenge, the rule says:
+  
+  if "ei" appears in a word, it must immediately follow "c".
+  
+  If "ie" appears in a word, it must not immediately follow "c".
+  
+  A word also follows the rule if neither "ei" nor "ie" appears anywhere 
+  in the word. Examples of words that follow this rule are:
+  
+  fiery hierarchy hieroglyphic
+  ceiling inconceivable receipt
+  daily programmer one two three
+  There are many exceptions that don't follow this rule, such as:
+  
+  sleigh stein fahrenheit
+  deifies either nuclei reimburse
+  ancient juicier societies
+  Challenge
+  Write a function that tells you whether or not a given word follows the 
+  "I before E except after C" rule.
+  
+  check("a") => true
+  check("zombie") => true
+  check("transceiver") => true
+  check("veil") => false
+  check("icier") => false
+========================================================================================================
+
+========================================================================================================
+
+20:
+  Given a list of integers separated by a single space on standard input, print 
+  out the largest and smallest values that can be obtained by concatenating the
+  integers together on their own line. This is from Five programming problems 
+  every Software Engineer should be able to solve in less than 1 hour, problem 
+  4. Leading 0s are not allowed (e.g. 01234 is not a valid entry).
+  
+  This is an easier version of #312I.
+  
+  Sample Input
+  You'll be given a handful of integers per line. Example:
+  
+  5 56 50
+  Sample Output
+  You should emit the smallest and largest integer you can make, per line. Example:
+  
+  50556 56550
+  Challenge Input
+  79 82 34 83 69
+  420 34 19 71 341
+  17 32 91 7 46
+  Challenge Output
+  3469798283 8382796934
+  193413442071 714203434119
+  173246791 917463217
+
+========================================================================================================
+
+21:
+  An isogram is a word that has no repeating letters, consecutive or nonconsecutive. 
+  Create a function that takes a string and returns either true or false depending 
+  on whether or not it's an "isogram".
+  
+  Examples
+  is_isogram("Algorism") == true
+  
+  is_isogram("PasSword") == false
+  # Not case sensitive.
+  
+  is_isogram("Consecutive") == false
+  Notes
+  Ignore letter case (should not be case sensitive).
+  All test cases contain valid one word strings.
+
+22:
+  # Two sisters are eating chocolate, whose pieces are represented as 
+  # subarrays of [length, width].
+  
+  # Write a function that returns true if the total area of chocolate is 
+  # the same for each sister.
+  
+  # To illustrate:
+  
+  # test_fairness([[4, 3], [2, 4], [1, 2]], [[6, 2], [4, 2], [1, 1], [1, 1]]) == true
+  
+  # // Agatha's pieces: [4, 3], [2, 4], [1, 2]
+  # // Bertha's pieces: [6, 2], [4, 2], [1, 1], [1, 1]
+  
+  # // Total area of Agatha's chocolate
+  # // 4x3 + 2x4 + 1x2 = 12 + 8 + 2 = 22
+  
+  # // Total area of Bertha's chocolate is:
+  # // 6x2 + 4x2 + 1x1 + 1x1 = 12 + 8 + 1 + 1 = 22
+  
+  # Examples
+  # test_fairness([[1, 2], [2, 1]], [[2, 2]]) == true
+  
+  # test_fairness([[1, 2], [2, 1]], [[2, 2], [4, 4]]) == false
+  
+  # test_fairness([[2, 2], [2, 2], [2, 2], [2, 2]], [[4, 4]]) == true
+  
+  # test_fairness([[1, 5], [6, 3], [1, 1]], [[7, 1], [2, 2], [1, 1]]) == false
+
+========================================================================================================
+  
+23:
+  # Create a function that retrieves every number that is strictly larger than 
+  # every number that follows it.
+  
+  # Examples
+  
+  # larger_than_right([3, 13, 11, 2, 1, 9, 5]) == [13, 11, 9, 5]
+  # # 13 is larger than all numbers to its right, etc.
+  
+  # larger_than_right([5, 5, 5, 5, 5, 5]) == [5]
+  # # Must be strictly larger.
+  # # Always include the last number.
+  
+  # larger_than_right([5, 9, 8, 7]) == [9, 8, 7]
+  
+  # Notes
+  # The last number in an array is trivially strictly larger than all numbers that 
+  # follow it (no numbers follow it).
+========================================================================================================
+
+========================================================================================================
+
+24:
+  Write a function that swaps the first pair (1st and 2nd characters) with the 
+  second pair (3rd and 4th characters) for every quadruplet substring.
+  
+  Examples
+  swap_two("ABCDEFGH") == "CDABGHEF"
+  
+  swap_two("AABBCCDDEEFF") == "BBAADDCCFFEE"
+  
+  swap_two("munchkins") == "ncmuinhks"
+  
+  swap_two("FFGGHHI") == "GGFFHHI"
+  
+  Notes
+  Keep leftover strings in the same order.
+========================================================================================================
+ 
+========================================================================================================
+25:
+  You are given an array representing the number of 0s, 1s, 2s, ..., 9s you have. 
+  The function will look like:
+  
+  can_build([#0s, #1s, #2s, ..., #9s], [num1, num2, ...])
+  
+  Write a function that returns true if you can build the following numbers using 
+  only the digits you have.
+  
+  Examples
+  can_build([0, 1, 2, 2, 3, 0, 0, 0, 1, 1], [123, 444, 92]) == true
+  
+  # You have: one 1, two 2s, two 3s, three 4s, one 8 and one 9
+  # Using only these digits, you can build 123, 444, and 92
+  
+  can_build([10, 2, 3, 8, 5, 8, 5, 5, 3, 1], [11, 2, 22, 49, 444, 998, 87, 44]) == false
+  
+  can_build([0, 0, 0, 0, 0, 0, 0, 0, 0, 0], []) == true
+  
+  can_build([0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3]) == false
+========================================================================================================
+
+26:
+  # Write a function that returns the total number of integers covered from an 
+  # array of intervals (inclusive).
+  
+  # Examples
+  # covered_integers([[80, 81], [1, 2], [9, 11]]) == 7
+  # # 7 Integers are covered: 1, 2, 9, 10, 11, 80, 81
+  
+  # covered_integers([[3, 6], [4, 6], [5, 6]]) == 4
+  
+  # covered_integers([[1, 2], [1, 2]]) == 2
+  
+  # Notes
+  # Intervals may overlap, be subintervals of each other, or be identical.
+  # For each interval [l, u], l and u will be integers, and l <= u will always be true.
+  
+27:
+  Create a function that determines whether or not a player is holding a 
+  Full House in their hand. A hand is represented as an array of 5 cards. 
+  A full house is defined as a pair of cards and a three-of-a-kind.
+  
+  To illustrate: ["A", "A", "A", "K", "K"] would be a Full House, since 
+  the player holds 3 aces and 2 kings.
+  
+  Examples
+  is_full_house(["A", "A", "A", "K", "K"]) == true
+  
+  is_full_house(["3", "J", "J", "3", "3"]) == true
+  
+  is_full_house(["10", "J", "10", "10", "10"]) == false
+  
+  is_full_house(["7", "J", "3", "4", "2"]) == false
+
+28:
+  Joseph is in the middle of packing for a vacation. He's having a bit of 
+  trouble finding all of his socks, though.
+  
+  Write a function that returns the number of sock pairs he has. A sock pair 
+  consists of two of the same letter, such as "AA". The socks are represented 
+  as an unordered sequence.
+  
+  Examples
+  sock_pairs("AA") == 1
+  
+  sock_pairs("ABABC") == 2
+  
+  sock_pairs("CABBACCC") == 4
+  
+  Notes
+  If given an empty string (no socks in the drawer), return 0.
+  There can be multiple pairs of the same type of sock, such as two pairs of 
+  CC for the last example.
+  
+29:
+  # Given two words, the letter distance is calculated by taking the absolute 
+  # value of the difference in character codes and summing up the difference.
+  
+  # If one word is longer than another, add the difference in lengths towards 
+  # the score.
+  
+  # To illustrate:
+  
+  # letter_distance("house", "fly") = dist("h", "f") + dist("o", "l") + dist("u", 
+  # "y") + dist(house.length, fly.length)
+  
+  # = |104 - 102| + |111 - 108| + |117 - 121| + |5 - 3|
+  # = 2 + 3 + 4 + 2
+  # = 11
+  # Examples
+  # letter_distance("sharp", "sharq") == 1
+  
+  # letter_distance("abcde", "Abcde") == 32
+  
+  # letter_distance("abcde", "bcdef") == 5
+  
+  # Notes
+  # Always start comparing the two strings from their first letter.
+  # Excess letters are not counted towards distance.
+  # Capital letters are included.
+
+========================================================================================================
+
+30:
+# Write a function that returns the length of the shortest subarray whose sum 
+# of all elements strictly exceeds n.
+
+# The subarray should be composed of contiguous elements from the original array.
+# If no such subarray exists, return -1.
+
+# Examples
+# min_length([5, 8, 2, -1, 3, 4], 9) == 2
+
+# min_length([3, -1, 4, -2, -7, 2], 4) == 3
+# # Shortest subarray whose sum exceeds 4 is: [3, -1, 4]
+
+# min_length([1, 0, 0, 0, 1], 1) == 5
+
+# min_length([0, 1, 1, 0], 2) == -1
+========================================================================================================
+
+31:
+  # Given a word, create a hash which stores the indexes of each letter in an array.
+  
+  # Make sure the letters are the keys.
+  # Make sure the letters are symbols.
+  # Make sure the indexes are stored in an array and those arrays are values.
+  # Examples
+  # map_letters("dodo") == { :d=>[0, 2], :o=>[1, 3] }
+  
+  # map_letters("froggy") == { :f => [0], :r=>[1], :o=>[2], :g=>[3, 4], :y=>[5] }
+  
+  # map_letters("grapes") == { :g=>[0], :r=>[1], :a=>[2], :p=>[3], :e=>[4], :s=>[5] }
+  
+  # Notes
+  # All strings given will be lowercase.
+  
+  # Also Rebuild the word if given the hash
+
+32:
+  In this challenge, you have to obtain a pyramidal version of a given string, 
+  transforming the string into an array containing a series of string slices 
+  that progressively increase or decrease steadily from the left to the right. 
+  Every slice containing two or more characters must have a space between every
+  pair of characters, to permit a hypothetical vertical alignment. See the 
+  example below:
+  
+  # REGULAR pyramidal version of "EDABIT"
+  
+  [ "E",
+   "D A",
+  "B I T" ]
+  Depending on the given type, you have to obtain a regular pyramid starting 
+  from its vertex (type === "REG") as in the example above, or a reversed 
+  pyramid starting from its base (type === "REV") as in the example below:
+  
+  # REVERSED pyramidal version of "EDABIT"
+  
+  ["E D A",
+    "B I",
+     "T"  ]
+  Every pyramid must follow the same steadily increment/decrement of its slices 
+  (or rows) by exactly one character (excluding spaces), so that not every 
+  string can be transformed in a pyramid! See the example below:
+  
+  # Regular pyramidal version of "PYRAMID"
+  
+  [ "P",
+   "Y R",
+  "A M I" ]
+  
+  # Letter "D" can't be placed in the pyramid
+  Given as parameters a string and a type, implement a function that returns:
+  
+  A string "Error!" if the pyramidal version can't be obtained from the given string.
+  An array containing the regular pyramidal version of the string if the given 
+  type is equal to "REG".
+  An array containing the reversed pyramidal version of the string if the given 
+  type is equal to "REV".
+  
+  Examples
+  pyramidal_string("EDABIT", "REG") == ["E", "D A", "B I T"]
+  
+  pyramidal_string("EDABIT", "REV") == ["E D A", "B I", "T"]
+  
+  pyramidal_string("PYRAMID", "REG") == "Error!"
+  
+  pyramidal_string("!", "REV") == ["!"]
+  
+  pyramidal_string("", "REG") == "[]
+  Notes
+  If the given string has just one character, the returned array will contain 
+  that single character. If the given string is empty, the returned array will 
+  be empty.
+  Remember to insert a space between every character inside the rows containing 
+  two or more characters.
+  The increment and the decrement of the rows in a pyramidal string are equal to 
+  one character more or less than the previous, depending on the given type.
+  You have to find a discriminant rule to establish if a string can be 
+  transformed into a pyramid, without creating single exceptions for every given 
+  case. What is suggesting to you the shape of a pyramid seen frontally?
+
+33:
+  Create a function that accepts a string and groups repeated values. The groups 
+  should have the following structure: [[value, first_index, last_index, 
+  times_repeated], ..., [value, first_index, last_index, times_repeated]].
+  
+  value: Character being assessed.
+  first_index: Index of characters first appearance.
+  last_index: Index of characters last appearance.
+  times_repeated: Number of consecutive times character repeats.
+  Examples
+  find_repeating("a") == [["a", 0, 0, 1]]
+  
+  find_repeating("aabbb") == [["a", 0, 1, 2], ["b", 2, 4, 3]]
+  
+  find_repeating("1337") == [["1", 0, 0, 1], ["3", 1, 2, 2], ["7", 3, 3, 1]]
+  
+  find_repeating("aabbbaabbb") == [["a", 0, 1, 2], ["b", 2, 4, 3], ["a", 5, 6, 2], ["b", 7, 9, 3]]
+  Notes
+  An empty string should return an empty array: "" == []
+  Non-repeated values should start and end on the same index.
+
+34:
+
+  Create a function that takes an array of increasing letters and return the missing letter.
+  
+  Examples
+  missing_letter(["a", "b", "c", "e", "f", "g"]) == "d"
+  
+  missing_letter(["O", "Q", "R", "S"]) == "P"
+  
+  missing_letter(["t", "u", "v", "w", "x", "z"]) == "y"
+  
+  missing_letter(["m", "o"]) == "n"
+  Notes
+  Tests will always have exactly one letter missing.
+  The length of test arrays will always be at least two.
+  Tests will be in one particular case (upper or lower but never both).
+
+35:
+
+  Write a function that determines if an array is circular. An array is 
+  circular if its subarrays can be reordered such that each subarray's last 
+  element is equal to the next subarray's first element.
+  
+  For example, the array [[1, 1, 1], [9, 2, 3, 4], [4, 1], [1, 2, 5, 7, 9]] 
+  is circular because we can re-arrange the elements to create the following array:
+  
+  [[9, 2, 3, 4], [4, 1], [1, 1, 1], [1, 2, 5, 7, 9]]
+  Examples
+  is_circular([[9, 8], [6, 9, 1], [8, 4, 2], [1, 9], [2, 1, 6]]) == true
+  # Can be reordered: [[9, 8], [8, 4, 2], [2, 1, 6], [6, 9, 1], [1, 9]]
+  
+  is_circular([[1, 1], [1, 2]]) == false
+  
+  is_circular([[2, 1], [1, 2]]) == true
+  
+  is_circular([[2, 1], [1, 2], [2, 1], [1, 3, 1], [1, 4, 4]]) == false
+  
+  Notes
+  In a circular re-ordering, the last subarray's last element must be identical 
+  to the first subarray's first element.
+  Subarrays will contain at least one element.
+
+36:
+  
+  Create a function to partition an array from left to right.
+  
+  Examples
+  moving_partition([-1, -1, -1, -1])
+  == [[[-1], [-1, -1, -1]], [[-1, -1], [-1, -1]], [[-1, -1, -1], [-1]]]
+  
+  moving_partition([1, 2, 3, 4, 5])
+  == [[[1], [2, 3, 4, 5]], [[1, 2], [3, 4, 5]], [[1, 2, 3], [4, 5]], [[1, 2, 3, 4], [5]]]
+  
+  moving_partition([]) == []
+  Notes
+  With an n input, your output should be an array containing n-1 subarrays. 
+  Each subarray should have two elements: the left and the right side of the 
+  partition (both should be non-empty, unless the input array is empty).
+  An empty array should return an empty array: []
+
+37:
+
+  Suppose a student can earn 100% on an exam by getting the answers all correct 
+  or all incorrect. Given a potentially incomplete answer key and the student's 
+  answers, write a function that determines whether or not a student can still 
+  score 100%. Incomplete questions are marked with an underscore, "_".
+  
+  ["A", "_", "C", "_", "B"]   # answer key
+  ["A", "D", "C", "E", "B"]   # student's solution
+  
+  == true
+  
+  # Possible for student to get all questions correct.
+  
+  ["B", "_", "B"]   # answer key
+  ["B", "D", "C"]   # student's solution
+  
+  == false
+  
+  # First question is correct but third is wrong, so not possible to score 100%.
+  
+  ["T", "_", "F", "F", "F"]   # answer key
+  ["F", "F", "T", "T", "T"]   # student's solution
+  
+  == true
+  
+  # Possible for student to get all questions incorrect.
+  Examples
+  possibly_perfect(["B", "A", "_", "_"], ["B", "A", "C", "C"]) == true
+  
+  possibly_perfect(["A", "B", "A", "_"], ["B", "A", "C", "C"]) == true
+  
+  possibly_perfect(["A", "B", "C", "_"], ["B", "A", "C", "C"]) == false
+  
+  possibly_perfect(["B", "_"], ["C", "A"]) == true
+  
+  possibly_perfect(["B", "A"], ["C", "A"]) == false
+  
+  possibly_perfect(["B"], ["B"]) == true
+  Notes
+  Test has at least one question.
+
+38:
+
+  A briefcase has a 4-digit rolling-lock. Each digit is a number from 0-9 
+  that can be rolled either forwards or backwards.
+  
+  Create a function that returns the smallest number of turns it takes to 
+  transform the lock from the current combination to the target combination. 
+  One turn is equivalent to rolling a number forwards or backwards by one.
+  
+  To illustrate:
+  
+  current-lock: 4089
+  target-lock: 5672
+  What is the minimum number of turns it takes to transform 4089 to 5672?
+  
+  4 ➞ 5
+  4 ➞ 5  # Forward Turns: 1 <- Min
+  4 ➞ 3 ➞ 2 ➞ 1 ➞ 0 ➞ 9 ➞ 8 ➞ 7 ➞ 6 ➞ 5  # Backward Turns: 9
+  
+  0 ➞ 6
+  0 ➞ 1 ➞ 2 ➞ 3 ➞ 4 ➞ 5 ➞ 6  # Forward Turns: 6
+  0 ➞ 9 ➞ 8 ➞ 7 ➞ 6  # Backward Turns: 4  <- Min
+  
+  8 ➞ 7
+  8 ➞ 9 ➞ 0 ➞ 1 ➞ 2 ➞ 3 ➞ 4 ➞ 5 ➞ 6 ➞ 7  # Forward Turns: 9
+  8 ➞ 7  # Backward Turns: 1  <- Min
+  
+  9 ➞ 2
+  9 ➞ 0 ➞ 1 ➞ 2  # Forward Turns: 3  <- Min
+  9 ➞ 8 ➞ 7 ➞ 6 ➞ 5 ➞ 4 ➞ 3 ➞ 2  # Backward Turns: 7
+  It takes 1 + 4 + 1 + 3 = 9 minimum turns to change the lock from 4089 to 5672.
+  
+  Examples
+  min_turns("4089", "5672") == 9
+  
+  min_turns("1111", "1100") == 2
+  
+  min_turns("2391", "4984") == 10
+  Notes
+  Both locks are in string format.
+  A 9 rolls forward to 0, and a 0 rolls backwards to a 9.
+
+39:
+
+  Create a function that returns true if each pair of adjacent numbers in an 
+  array shares at least one digit and false otherwise.
+  
+  Examples
+  shared_digits([33, 53, 6351, 12, 2242, 44]) == true
+  # 33 and 53 share 3, 53 and 6351 share 3 and 5, etc.
+  
+  shared_digits([1, 11, 12, 13, 14, 15, 16]) == true
+  
+  shared_digits([33, 44, 55, 66, 77]) == false
+  
+  shared_digits([1, 12, 123, 1234, 1235, 6789]) == false
+
+40:
+  
+  Write a function that returns the number of times you must carry a digit 
+  when you sum together two integers.
+  
+  Examples
+  carry_digits(36, 135) == 1
+  # You carry the 1 when you sum 6 and 5 together.
+  
+  carry_digits(671, 329) == 3
+  
+  carry_digits(1111, 3333) == 0
+  
+  carry_digits(53214, 56905) == 3
+  Notes
+  Count all carry operations (even those on leading digits).
+
+41:
+
+  Write a function that inserts a white space between every instance of a lower 
+  character followed immediately by an upper character.
+  
+  Examples
+  insert_whitespace("SheWalksToTheBeach") == "She Walks To The Beach"
+  
+  insert_whitespace("MarvinTalksTooMuch") == "Marvin Talks Too Much"
+  
+  insert_whitespace("TheGreatestUpsetInHistory") == "The Greatest Upset In History"
+  Notes
+  Each word in the phrase will be at least two characters long.
+
+42:
+
+  You are given an input array of bigrams, and an array of words.
+  
+  Write a function that returns true if you can find every single bigram 
+  from this array can be found at least once in an array of words.
+  
+  Examples
+  can_find(["at", "be", "th", "au"], ["beautiful", "the", "hat"]) == true
+  
+  can_find(["ay", "be", "ta", "cu"], ["maybe", "beta", "abet", "course"]) == false
+  # "cu" does not exist in any of the words
+  
+  can_find(["th", "fo", "ma", "or"], ["the", "many", "for", "forest"]) == true
+  
+  can_find(["oo", "mi", "ki", "la"], ["milk", "chocolate", "cooks"]) == false
+  Notes
+  A bigram is string of two consecutive characters.
+
+43:
+
+  Write a function that removes the last vowel in each word in a sentence.
+  
+  Examples
+  remove_last_vowel("Those who dare to fail miserably can achieve greatly.")
+  == "Thos wh dar t fal miserbly cn achiev gretly."
+  
+  remove_last_vowel("Love is a serious mental disease.")
+  == "Lov s  serios mentl diseas"
+  
+  remove_last_vowel("Get busy living or get busy dying.")
+  == "Gt bsy livng r gt bsy dyng"
+  Notes
+  Vowels are: a, e, i, o, u (both upper and lowercase).
+
+44:
+  
+  Create a function that takes an array and a number and selectively reverse 
+  the order of the array based on the number you're given (second argument). 
+  If you're given the arguments [1,2,3,4,5,6] and 2, you would return the 
+  array [2,1, 4,3, 6,5].
+  
+  Examples
+  sel_reverse([1,2,3,4,5,6], 2) == [2,1, 4,3, 6,5]
+  
+  sel_reverse([2,4,6,8,10,12,14,16], 3) == [6,4,2, 12,10,8, 16,14]
+  
+  sel_reverse([5,7,2,6,0,4,6], 100) == [6,4,0,6,2,7,5]
+  
+  Notes
+  If the list you're given can't be broken up into equal parts, just reverse 
+  the remaining numbers (see 2nd expample).
+  If len exceeds the list length, reverse everything.
+  If len is zero, return the original list.
+
+45:
+
+46:
+
+47:
+
+48:
+
+49:
+
+50:
+
+51:
+
+52:
+
+53:
+
+54:
+
+55:
+
+56:
+
+57:
+
+58:
+
+59:
+
+60:
+
+61:
+
+62:
+
+63:
+
+64:
+
+65:
+
+66:
+
+67:
+
+68:
+
+69:

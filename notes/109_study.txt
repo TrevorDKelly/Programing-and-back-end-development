@@ -253,24 +253,25 @@ Loops
 ************************************************************************************************
 ************************************************************************************************
 
-CANNED PHRASES
+Interview
 
 ************************************************************************************************
 ************************************************************************************************
+************************************************************************************************
 
+Questions
+  Verify input
+  Strings
+    Handle capitalization?
+  numbers
+    floats
 
-
-Variables as Pointers
-  - This shows how, because variables are pointers to objects, modifying an object changed what is referenced by any variable pointing to that object
-
-Map 
-  - `#map` iterates through the calling array and passes each element into the block assigning it to the paramiter, `n`.
-    `#map` returns a new, transformed array where each element is the return value of the block for that iteration.
-
-HASH
-  Each
-    - `Hash#each` iterates through the calling collection passing each key value pair into the block in turn and assigning them to the paramiters `key` and `value`.
-  Select
-    - the `Hash#select` method iterated throught the calling Hash and passes each key value pair into the block in turn assigning them to the paramiters `k` and `v`.
-      `Hash#select` returns a hash containg any key value pairs for which the block returns a truthy value.
-
+Edge cases
+  Empty
+    [], "", {}, 0
+  nil
+  numbers
+    1, 0
+    extra digits
+    input as integers?
+    
