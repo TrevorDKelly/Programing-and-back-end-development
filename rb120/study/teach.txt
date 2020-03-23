@@ -1,0 +1,132 @@
+CLASS
+
+    - basic outline of what an object is made of and what it is able to do
+    - objects are created from classes
+        every object has a class
+            number class example
+    - define a new class
+        defined using the class keyword
+            define new class
+    - create new object
+        initialize local var
+        call new method
+        call class on new object
+    - initialize method
+        new calls initialize
+        arguments are passed to it
+    - what an object is made of
+        instance variables encapsulate state
+        how data is tied to an object
+            initialize a instnce variable
+        p object
+            is a object with the class with the ivar
+        new instance variable for every object
+            create name ivar different for two objects
+            p both objects
+    - what an object can do
+        instance methods create the interface
+            define instance method
+            call instance method for both objects
+
+CLASS VARIABLE AND INSTANCE VARIABLE
+
+    - instance variables is a variable scoped at the object level
+    - it is how data is tied to an object
+        define class
+        initialize method with name
+    - every object has its own copy of the instance variable
+        instantiate two objects
+        p to screen
+        point out two ivars
+    - available within all the instance methods of the class
+        define i method
+        call i method
+    - subclasses
+        ivars return nil if uninitiated
+            define subclass that overrides initialize
+            instantiale subclass object
+            p object
+
+    - class variables are scoped at the class level
+    - data stored in class variables is availavble to all objects of that class or its subclasses
+    - all objects share teh same class variable
+        define class
+        initialize class var
+        class method to change class var
+        class var getter
+        instantiate two objects
+        both call getter
+        call change method
+        both call getter
+
+
+ENCAPSULATUION
+
+    - hiding pieces of funtionality so that it is unavailable to the rest of
+      the code base
+    - done in ruby by defining classes and exposing an interface for objects
+      of that class
+    - allows us to abstract out from the implimentation details and interact
+      with the interface and prevents us from changing something without intent
+        define class
+        define method
+        intantiate object
+        call method
+    - dont need to know how the method works
+
+
+POLYMORPHISM
+
+    - the ability for data to be represented by many different types
+    - allows us to pass different objects into the same code
+        to_s example
+    - two diffrent types
+        duck typing
+            define two classes with the same method name
+            example of calling them
+        inheritance
+            define a subclass
+            add to example
+
+
+SUPER
+
+    - reserved word in ruby that calls the same method from up the inheritance chain
+        define class and subclass
+        define instance method in both
+        use super
+    - passing arguments
+        without () all arguments are passed
+            example
+        can pass some or exactly none
+            pass some
+            pass none example
+
+
+
+MODULES
+
+    - container for common funtionality
+    - like a class but cant create objects
+    - used to share common funtionality that falls outside of the class structure
+        define class with subclasses
+        define subclasses of one of the classes
+        * Mixin
+
+
+CLASS AND INSTANCE METHODS
+
+    class method
+    - called by a class itself
+    - used when a method does not need an instance of the class to function.
+        define class and class method
+        call method
+    - has access to class variables but not instance vars
+
+    instance method
+    - called by instances of the class
+    - public instance methods make up the interface for the class
+        define class
+        define instance method
+        instantiate object
+        call method

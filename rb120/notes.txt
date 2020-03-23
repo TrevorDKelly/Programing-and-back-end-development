@@ -1,41 +1,209 @@
 *******************************************************************************
 *******************************************************************************
 *                                                                             *
-*                                 DEFINITIONS                                 *
+*                              DEFINITIONS                                    *
 *                                                                             *
 *******************************************************************************
 *******************************************************************************
-*
-* Encapsilation
-* - Hiding pieces of functionality so that it is unavailable to the rest of
-*   the code base
-* - It defines the boudries of an application to allow for levels of complexity
-* - Done by creating objects and exposing interfaces(methods) to interact with 
-*   thsoe methods.
-*
-* Polymorphism
-* - the ablitity for datat to be represented by many different types
-* 
-* Inheritance
-* - when a class inherits the behaviors of another class
-* Superclass
-* - the class that was inherited by another class
-* Subclass
-* - the class that has inherited another
-*
-* Module
-* - similar to a class but you cannot create an object with a module
-*
-* Mixin
-* - how you add a module into a class
-* - use the `include` method
-*
-* Class
-* - the basic outline of what an object should be made of and what it should be
-*   able to do
-* - objects are created from classes.
-* - classes are a mold and objects are what is created out of that mold
-* 
-* Instance
-* - objecs are an instance of a class
-* 
+
+Encapsulation
+  - Hiding pieces of functionality so that it is unavailable to the rest of
+    the code base
+  - Hiding the internal operation of an object and exposing only it's public
+    interface.
+  - Prevents manipulation of existing fuctionality without intent
+  - It defines the boudries of an application to allow for levels of complexity
+  - Done by creating objects and exposing interfaces(methods) to interact with
+    thsoe methods.
+
+Polymorphism
+  - the ablitity for data to be represented by many different types
+  - allows similar actions to be perfomed on objects of diffrent classes
+    - to_s method
+  - The ability for different objects to respond in different ways to the same
+    message
+
+Inheritance
+  - Used to extract common bahaviors from classes that share the behavior
+  - when a class inherits the behaviors of another class
+Superclass
+  - the class that was inherited by another class
+Subclass
+  - specializes the superclass
+  - has an 'is a' relationship with the superclass
+  - the class that has inherited another
+Overriding
+  - defining a method in a subclass with the same name as one defined in a
+    superclass
+  - objects of the subclass will use the new method rather than the one defined
+    in the superclass
+
+Super
+  - reserved word used to call methods of the same name from up the inheritence
+    hierarchy
+  - Arguments
+    - super will automatically pass all arguments given unless the `super` call
+      is passed its own arguments
+        super(param1, param2)
+        - super is called and two arguments passed to the superclass method
+        super()
+        - specifically 0 arguments passed to the superclass method
+        super
+        - all arguments passed to the subclass method are passed to the
+          superclass method
+
+Module
+  - a collection of behaviors that is usable in other classes via mixins
+  - similar to a class but you cannot create an object with a module
+Mixin
+  - how you add a module into a class
+  - use the `include` method
+Namespacing
+  - organizing similar classes or methods under a module
+  - prevents large codebases from having duplicated classes or methods
+
+Class
+  - the basic outline of what an object should be made of and what it should be
+    able to do
+  - objects are created from classes.
+  - group common behaviors
+  - classes are a mold and objects are what is created out of that mold
+
+Instance
+  - objecs are an instance of a class
+  - encapsulate state
+Instantiation
+  - the process of creating an object from a class.
+    - class Person
+       end
+      bob = Person.new
+    - an object `bob` of the class `Person` has been instantiated
+  - the `initialize` method is called every time a new object is instantiated
+    - Constructor method
+      - method that gets called when an object is created.
+Instance Variable
+  - keep track of state
+    - how data is tied to an object
+  - start with the @ symbol => @name = 'Trevor'
+  - scoped at the object(or instance) level
+    - available within instance methods
+  - how objects keep track of their state
+  - an uninitialized instance variable will return nil. not an error
+Instance Method
+  - expose behavior for objects
+  - methods defined within a class
+  - behaviors are available to any objects of that class
+
+Class Methods
+  - Methods that can be called directly on the class without having to
+    instantiate any objects
+  - defined with the reserved word `self`
+      def self.method_name; end
+      - this is equivelent to:
+        def ClassName.method_name; end
+  - called by the class, not by objects of the class
+      ClassName.do_this_method
+
+Class variable
+  - variables that are scoped at the class level
+    they are available to any methods in the class
+  - only one copy and is available to all objects in the class
+  - used to keep track of class level data like counts and things that change
+  - start with two @ symbols => @@var_example
+
+Constant Variable
+  - Variable whos value will not change
+  - Have lexical scope
+    - can be accessed within the class where it is defined and its subclasses
+    - cannot be accessed by superclasses
+    - Modules need to call the constant from the class,
+  - used for
+      perminent values (pi, dog_years...)
+      values that should stay consistent (display width, score to win)
+  - defined in all caps => CONSTANT_VARIABLE = 'This doesnt change'
+
+Method Lookup Path
+  - the `ancestors` method returns the order that Ruby looks thru the moduels
+    and superclasses
+  - order:
+      class
+      modules (from last included to first)
+      superclass
+      superclass's included modules (from last included to first)
+      ...
+      Object
+      Kernel
+      BasicObject
+
+States
+  - Tracks the attribtes for individual objects
+  - two objects of the same class will have different states
+Behaviors
+  - What an object is capable of doing
+  - two objects of the same class will have the same behaviors
+
+attr_*
+  - used to create getter and setter methods for instance variables
+  - also creates instance variables of the same name
+attr_reader :var
+  - creates a getter method. Equivalent to:
+      def var
+         @var
+      end
+attr_writer :var
+  - creates a setter method. equivalent to:
+      def var=(new_value)
+        @var = new_value
+      end
+attr_accessor :var, :other_var, :third_var
+  - creates getter and setter methods
+
+Self
+  - references the caller
+    - if used in an instance method it references the instance (calling object)
+    - if used outside an instance method it references the class
+  - lets us be explicit about what the program is referencing
+
+Public Method
+  - a method available for use by anyone who knows the class or object's name
+  - they create a class's interface
+Private Method
+  - a method that can only be used within a class definition
+  - cannot be invoked by an object
+      object.private_method #=> private method error
+Protected Method
+  - a method that can only be called from wihin a class but can be called by an
+    object
+      self.protected_method #=> Works!
+Interface
+  - how other classes or objects interact with a class
+
+Collaborator Objects
+  - objects stored as part of another object's state
+
+Fake operators
+  - methods that appear to be operators but acually are defined methods
+    ( ==, +, -, <=>, <<, [], []= )
+  - NOT FAKE OPERATORS:
+    assignment operators ( = += -= *= )
+    range                ( .. ... )
+    turnery if           ( ? : )
+    logical              ( && || )
+  - indexed assignment IS
+    []=
+      defined as []=(index, new) => array[index] = new
+  - their functionality can be overridden in new classes
+    default's to the definition from `Object`
+  - pay attention to return values
+    - NewClass + NewClass should return an instance of NewClass
+
+      class Book
+        def initialize(pages)
+          @pages = pages
+        end
+
+        def +(other)
+          joined_pages = book.pages + other.pages
+          Book.new(joined_pages)
+        end
+      end
