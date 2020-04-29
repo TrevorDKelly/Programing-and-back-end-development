@@ -1,23 +1,40 @@
-# get size of array, what to take out
-# return int
+# get string
+# return string
 
-# create an array of the ints 1..n. remove the kth element.
-# starting from the next number, remove the kth element. loop to the start
-# after the last element in the collection.
+# given a string containg only R, G, and B, for each set of consecutive letters
+# add to a new sting either the letter if they are both the same or the missing
+# letter if they are different.
 
-# create array
-# x = 0
-# until 1 remaining
-#   x += k % array size - 1
-#   remove element x
-# return last element
+# spit sting to chars
+# loop till one let
+#   iterate with index thru chars
+#     compare char with char of next index
+#       return eiter letter if they are the same or missing if different
+#       break if last char
+# return last letter
 
-def josephus_survivor(n,k)
-  arr = (1..n).to_a
-  x = 0
+def compare_letters(a, b)
+  return a if a == b
 
-  arr.delete_at(x = (x + k - 1) % arr.size) until arr.size == 1
-  arr[0]
+  p ['R', 'G', 'B'].each { |l| return l unless [a, b].include?(l) }
 end
 
-p josephus_survivor(7,3)
+def triangle(row)
+  letters = row.chars
+
+  until letters.size == 1
+    letters.map!.with_index do |letter, i|
+      if letters[i + 1] == nil
+        ''
+      else
+        compare_letters(letter, letters[i + 1])
+      end
+    end
+
+    letters.delete('')
+  end
+
+  letters[0]
+end
+
+p triangle('RBRGBRBGGRRRBGBBBGG') == 'G'

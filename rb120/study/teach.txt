@@ -27,6 +27,7 @@ CLASS
         instance methods create the interface
             define instance method
             call instance method for both objects
+    - allow for abstraction and encapsulation
 
 CLASS VARIABLE AND INSTANCE VARIABLE
 
@@ -48,7 +49,8 @@ CLASS VARIABLE AND INSTANCE VARIABLE
             p object
 
     - class variables are scoped at the class level
-    - data stored in class variables is availavble to all objects of that class or its subclasses
+    - data stored in class variables is availavble to all objects of that class
+      or its subclasses
     - all objects share teh same class variable
         define class
         initialize class var
@@ -130,3 +132,44 @@ CLASS AND INSTANCE METHODS
         define instance method
         instantiate object
         call method
+
+
+METHOD LOOKUP PATH
+
+    - The order ruby will inspect classes when a method is called
+        define class
+        define subclass
+        define module
+        define module
+        define module
+        include modules
+    - ancestors shows lookup path
+    - modules are in reverse order of when they are included
+
+
+ATTR_*
+
+    - used to create getter and setter methods for instance variables.
+    - 3 kinds
+        define class
+        attr_reader
+    - is equivelent to
+        create equivelant method
+        same w/ writer
+        same w/ accessor
+
+ACCESS CONTROL
+
+    - ruby has 3 levels of access contol
+        public
+        private
+        protected
+    - PUBLIC makes up a class's interface. methods are public unless specified otherwise
+        define class
+        define method
+        create object
+        call method
+    - PRIVATE can only be called from within a class definition with self as the caller
+    - done by moving instance method definition below 'private'
+        change method to private
+        try to call method
