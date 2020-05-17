@@ -1,0 +1,80 @@
+===============================================================================
+
+                                 RB 130 Notes
+
+===============================================================================
+
+Closure
+  - General programing concept that allows programers to save a 'chunk of code' and execute it at a later time
+  - Binds surrounding artifacts and builds an "enclosure" around everything so they can be referenced when the closure is later executed.
+  - Similar to a method in that it can be passed around and executed but it is not defined with a specific name
+  - Implimented throug Proc objects, Lambdas, and blocks
+
+Binding
+  - a closure's references to it's surrounding artifacts
+  - binding is retained as a closure is passed into methods or called elsewhere
+  - the surounding environmnt/context of a closure
+      - a variable referenced inside the block will use the variables value when executed
+          ex.
+            name = 'trevor'
+            block = Proc.new { puts name }
+            block.call   #=> trevor
+            name = 'joe'
+            block.call   #=> joe
+      - any information the block needs like variables, methods, constants, ect. will be "carried around" and seem to break scoping rules 
+
+Proc
+  - class whos objects are closures
+
+Lambdas
+
+Blocks
+  - delineated by `do...end` or `{...}` imediately following a method call
+  - are passed to a mehtod as an argument
+  When to Use
+    - when defering implimentation code to method invocation 
+        - allows the method to be flexible
+        - implimentor can refine the method to different senerios
+    - Sandwitch code
+        - method has a before and after action
+            comparing an object before and after the block is run
+            resorce management
+Implicit Parameter
+  - all methods take a block as an implicit parameter
+      - it does not need a paramiter defined at method implimentation
+Yielding
+  - yield keyword executes the block passed as an argument to a method
+  - LocalJumpError is raised if yield is called but there is no block passed in at method invocation
+      - Kernel#block_given? method checks for a block
+          yield if block_given?
+  - yield reters the return value of the block
+Explicit Blocks
+  - paramiter is defined with `&` before it
+  - converts the block into a "simple" Proc object
+  - do not use the `&` to reference the parameter
+  - by assigning a variable to the block it can be passed into other methods
+  - Proc object calls `call` method to execute
+Blocks and Scoping
+  - A block creates a new scope for variables
+      - outer scoped variables are available to inner scopes
+
+Method Implimentation
+  - where the method is defined
+      i.e. "the method implimentation includes one paramiter"
+Method Invocation
+  - where the method is called
+      i.e. "the method invocation passes one argument and a block...."
+
+Arity
+  - The rules regarding the number of arguments you can pass into a block
+  - arity rules for blocks is lenient in ruby
+      Errors won't be raised if the wrong number of arguments are passed
+
+#to_Proc
+  - following a collection method call use `(&:method_name)` to call that method on all objects in the collction
+      - can only be used for methods that don't have paramiters
+          [1, 2, 3].each(&:to_s) #=> ['1', '2', '3']
+  - `&`
+      when put before an object it tells ruby to convert that object to a block.
+      If the object is not a Proc, #to_proc is called on it
+      `(&:to_s)` becomes `{ |x| x.to_s }`
