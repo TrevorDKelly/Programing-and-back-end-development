@@ -1,40 +1,48 @@
 # get string
-# return string
+# return int
 
-# given a string containg only R, G, and B, for each set of consecutive letters
-# add to a new sting either the letter if they are both the same or the missing
-# letter if they are different.
+# given a string of numbers and operators, use order of operations to find the
+# outcome of the equation
 
-# spit sting to chars
-# loop till one let
-#   iterate with index thru chars
-#     compare char with char of next index
-#       return eiter letter if they are the same or missing if different
-#       break if last char
-# return last letter
+# split into numbers and symbols. find the multi and div, replace operator and
+# numbers on either side with the solution and continue. then go thru and do the
+# same for add and subtract.
 
-def compare_letters(a, b)
-  return a if a == b
+# split
+# get index of * or /
+# replace i -1 , i , and i + 1 with solution
+#   i-1 send (i, i+1)
+# until size is 1
+#   0.send (1, 2)
 
-  p ['R', 'G', 'B'].each { |l| return l unless [a, b].include?(l) }
-end
+class Calculator
+  def evaluate(string)
+    line = string.split
 
-def triangle(row)
-  letters = row.chars
+    multiply_and_divide(line)
 
-  until letters.size == 1
-    letters.map!.with_index do |letter, i|
-      if letters[i + 1] == nil
-        ''
-      else
-        compare_letters(letter, letters[i + 1])
-      end
-    end
+    add_and_subtract(line)
 
-    letters.delete('')
+    line[0].to_f
   end
 
-  letters[0]
+  private
+
+  def multiply_and_divide(line)
+    while line.include?('*') || line.include?('/')
+      i = line.index { |x| ['*', '/'].include?(x) }
+
+      num1 = line[i - 1].to_f
+      operator = line[i]
+      num2 = line[i + 1].to_f
+
+      line[(i - 1)..(i + 1)] = num1.send(operator, num2)
+    end
+  end
+
+  def add_and_subtract(line)
+    line[0..2] = line[0].to_i.send(line[1], line[2].to_i) until line.size == 1
+  end
 end
 
-p triangle('RBRGBRBGGRRRBGBBBGG') == 'G'
+p Calculator.new.evaluate("127")
