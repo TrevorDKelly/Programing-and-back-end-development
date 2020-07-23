@@ -1,6 +1,6 @@
-def compute
+def compute(arg = nil)
   if block_given?
-    yield
+    yield(arg)
   else
     'Does not compute'
   end
