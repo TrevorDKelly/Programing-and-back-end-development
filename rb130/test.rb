@@ -1,44 +1,51 @@
-# snail
-#
-# given nested array
-# return array
-#
-# return an array that is the spiral of the visual of the nested array
-#
-# get size
-# go right size -1 times
-# go down x times
-# x -1
-# go up x
-# go right x
-# x - 1
-#
-# x = size - 1
-# spot = [0, 0]
-# newarr = []
-#
-# loop
-#   add spot to newarr
-#   x - 1 times add i to spot[1]
-#   add spot to newarr
-#   x - 1 times add i to spot[0]
-#   x -= 1
-#   i *= -1
+# get int
+# return string
+# 
+# retrun a string that lists how many times each prime number smaller than x can fit into x
+# 
+# get all primes smaller than x
+# iterat thru them
+#   find how many time is goes in
+#   add to the return string
+#     format
+# return string
+# 
+# get primes
+#   skip 1
+#   coll = [2]
+#   from 3 by 2s
+#     add t ocollection if 
+#       <= x
+#       is prime
+#       
+# is prime
+#   from 2..num / 4
+#   false if num % x == 0
 
-def snail(array)
-  x = array.size - 1
-  spot = [0,0]
-  new_arr = []
-  i = 1
-
-  loop do
-    (x - 1).times do
-      new_arr << array[spot[0]][spot[1]]
-      spot[1] += i
-    end
-    break
+def is_prime?(num)
+  return true if num < 4
+  return false if num == 4 || num == 6
+  (2..(num/4)).each do |x|
+    return false if num % x == 0
   end
-  puts new_arr
+  true
 end
 
-snail([[1,2,3],[4,5,6],[7,8,9]])
+def collect_primes(num)
+  (2..num).select { |x| is_prime?(x) }
+end
+
+def decomp(n)
+  primes = collect_primes(n)
+  string = ''
+
+  primes.each do |p|
+    t = n/p
+    string += "#{p}"
+    string += "^#{t}" unless t == 1
+    string += " * " unless p == primes.last
+  end
+
+  string
+end
+puts $LOADED_FEATURES
