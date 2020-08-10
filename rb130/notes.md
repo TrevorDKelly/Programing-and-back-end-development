@@ -1,7 +1,7 @@
 Closure
   - a chunk of code
   - binds its surrounding artifacts
-      builds an 'enclosure' around them 
+      builds an 'enclosure' around them
       allows them to be referenced later when the closure is executed
   - similar to a method that is passed around and executed
       but it is not defined with an explicit name
@@ -20,12 +20,12 @@ Block
       variable is a Block Local Variable
       scope is contained within the block
   - Allows for flexibility when calling a method
-  - Allows us to differ some inplimentation code 
-      can decide at method invocation time 
+  - Allows us to differ some inplimentation code
+      can decide at method invocation time
   - return value is the last expresion in the block (unless `return`)
 
 Yielding
-  - the `yield` keyword executes the block 
+  - the `yield` keyword executes the block
   - if `yield` is called in the method definition and no block is passed at invocation, a `LocalJumpError` is raised
       `Kernel#block_given?` method can get past that
   - `yield` is passed arguments like a method call
@@ -35,11 +35,11 @@ Arity
   - rules regarding how many arguments can be passed to a block
   - in ruby num of arguments doesnt have to match num of block paramiters
       def test
-        yield(1, 2) 
+        yield(1, 2)
       end
 
       test { |param| puts param } #=> 1
-      
+
   - block paramiters are `nil` if nothing is yielded
       def test
         yield(1)
@@ -48,7 +48,7 @@ Arity
       test { |param1, param2| puts "#{param1}-#{param2} } #=> "1-"
 
 Implimentation
-  - the method definition. 
+  - the method definition.
   - Decideds if a block is used and how it is used
 Invocation
   - calling a method.
@@ -120,7 +120,7 @@ SEAT Approach
     Assert results
     Tear down lingering artifacts
   - setup method is run before all tests
-      used to build objects that are going to be tested 
+      used to build objects that are going to be tested
   - teardown method is run after every test
       used to break down lingering effects of program - close files ect.
 
@@ -142,4 +142,34 @@ StringIO
   - class that simulates input - a "String Stream"
       `input = StringIO.new("abcdefg/n")
           'abcdefg' is typed then return is hit
-  
+
+
+Project directories
+  test code in a `test` directory
+  ruby source files in a `lib` directory
+  Gemfile
+
+  .gemspec
+    `project_name.gemspec`
+      ```ruby
+      Gem::Specification.new do |s|
+        s.name        = 'todolist_project'
+        s.version     = '1.0.0'
+        s.summary     = 'Todo List Manager!'
+        s.description = 'This is a simple todo list manager!'
+        s.authors     = ['Pete Williams']
+        s.email       = 'pw@example.com'
+        s.homepage    = 'http://example.com/todolist_project'
+        s.files       = ['lib/todolist_project.rb', 'test/todolist_project_test.rb']
+      end
+      ```
+  Rakefile
+    add `require 'bundler/gem_tasks'`
+      adds common tasks to the Rakefile
+        rake build
+          creates a .gem file in the pkg directory
+        rake install
+          runs rake build then installs it as a gem to your directory
+        rake release
+          sends the .gem file to Rubygems
+
