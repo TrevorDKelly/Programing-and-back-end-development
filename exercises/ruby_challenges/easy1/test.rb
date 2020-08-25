@@ -10,7 +10,18 @@
 # return if only two
 # return first + call for 1..-1
 
-def max_rotation(num)
+# get int
+# return int
+#
+# loop from 0 to length -2, move that char to the end, save new num
+#
+# size - 1 tiems
+#   delete at index => save
+#   prepend saved
+#   save new
+
+
+def max_rotation2(num)
   num = num.to_s
   num = recursive(num)
   num.to_i
@@ -28,6 +39,19 @@ def rotate(num)
   digits = num.split('')
   digits = digits[1..-1] + [digits[0]]
   digits.join
+end
+
+
+def max_rotation(num)
+  num = num.to_s
+
+  (num.size - 1).times do |index|
+    move_number = num[index]
+    num[index] = ''
+    num += move_number
+  end
+
+  num.to_i
 end
 
 p max_rotation(735291) == 321579

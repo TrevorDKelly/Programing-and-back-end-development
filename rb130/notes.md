@@ -22,7 +22,7 @@ Block
   - Allows for flexibility when calling a method
   - Allows us to differ some inplimentation code
       can decide at method invocation time
-  - return value is the last expresion in the block (unless `return`)
+  - return value is the last expresion in the block
 
 Yielding
   - the `yield` keyword executes the block
