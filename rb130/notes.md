@@ -173,3 +173,29 @@ Project directories
         rake release
           sends the .gem file to Rubygems
 
+
+============================================================
+EXAMPLES
+
+BLOCK USE
+
+``ruby
+def change_odd_chars(string)
+	chars = string.chars
+	new_letters = chars.map.with_index do |letter, index|
+		if index.odd?
+			yield(letter)
+		else
+			letter
+		end
+	end
+	new_letters.join
+end
+
+string = "Test string"
+
+change_odd_chars(string) { |letter| letter.upcase } #=> "TEsT StRiNg"
+
+change_odd_chars(string) { |letter| 'X' } #=> "TXsX XtXiXg
+```
+
