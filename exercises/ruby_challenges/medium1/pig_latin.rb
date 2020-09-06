@@ -1,5 +1,5 @@
 class PigLatin
-  LOCKED_START = /^(a|e|i|o|u|xr|yt)/
+  LOCKED_START = /^(a|e|i|o|u|(x|y)[^aeiou])/
   GROUPED_STARTS = /^(ch|thr|th|qu|sch|.qu|.)/
 
   def self.translate(input)
