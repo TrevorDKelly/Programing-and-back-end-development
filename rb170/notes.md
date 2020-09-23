@@ -141,3 +141,193 @@ Internet/Network Layer
     Routing
       routers store a routing table
         used to find where a received packet should be routed to
+
+Transport Layer
+  Multiplexing
+    transmitting multiple signals over a single channel
+    Demiltiplexing is the oppisite process
+    at the physical layer
+      a fiberoptic cable sending sygnals at different angles of refraction
+      radio waves at different frequencies
+  Network Ports
+    how multiplexing is applied at the transport layer
+    an identifier for a specific process running on a host
+    is an integer between 0 and 65535
+      0 - 1023
+        assigned to common processes like HTTP(80), FTP(20,21), ...
+      1024 - 49151
+        registered ports - assigned as requested by private entities
+        can be assigend to ephemeral ports on the client side
+      49152 - 65535
+        Dynamic ports (private ports)
+        cannot be registered for a specific use
+        used for customized services or for allocation as ephemeral ports
+    ephemeral port
+      a temporary port assigned to a host process by the operatino system
+    listening
+      a host receving a message on a specific port is listening on that port
+    source and destination ports are in header of Transport layer PDU
+  Socket
+    a communication end point
+    combination of IP address and port number
+    can be conceptual or implementable
+      conceptually a communication end point for inter-process communication
+      Implementation involves creating socket objects in a program
+        most common implementation is the Berkley Sockets API Model
+          defines functions like `bind`, `listen`, `accept`, and `connect`
+      Can be implimented as different things
+        UNIX socket
+          mechanism for communication between processes on the same machine
+        Internet socket (TCP/IP socket)
+          mechanism for inter-process communication btwn networked processes
+    connectionless system
+      has IP and Socket number
+      processes all incoming information as it arrives to that ip:socket
+    Connection-oriented system
+      has IP and Socket number
+      when a message arrives
+        creates new socket object - local IP:socket and sender's IP:socket
+      creates a direct connection for that process
+        directly from ip:socket of one host to ip:socket of other host
+      only listens for messages matching all 4
+      Four-tuple
+        all four pieces of info in a connection oriented system
+          local IP, local socket, destination IP, destination socket
+      when a message not matching all in Four-tuple arrives
+        original socket picks it up and creates another socket with all four
+  Reliability
+    lower level protocols are unreliable communication channels
+      IP packets get dropped
+      no retransmition system
+      failed checksums get dropped
+    Elements required for reliability
+      In order delivery
+      error detection - checksum
+      handling data loss - retransmitting lost packets
+      handling duplication - sequence numbers used to remove duplicates
+    Pipelineing
+      sending multiple messages without waiting for response
+      Window
+        maximum number of messages that can be in a pipline
+        set by the sender
+      More efficient use of bandwidth
+  TCP - Transmission Control Protocol
+    Connection oriented protocol
+    provides reliable data trasnfer
+      abstracts away complexity of reliable network communication
+    Segments - PDU of TCP
+      Header
+        Source Port and Destination Port
+        Sequence Number and Acknowledgement Number
+          used to solve in order delivery, data loss, duplication
+        Checksum
+        Window Size
+          for flow control
+        Flags
+          Boolean fields
+            URG, PSH - importance of data
+            SYN, ACK, FIN, RST - establishing and ending connections
+      payload
+        application layer PDU
+    does not send application data until a connection is established
+    Three-way Handshake
+      uses SYN and ACK flags
+        sender sends SYN Segment - TCP segment with SYN flag set to 1
+        receiver receives then sends back SYN ACK segment
+        sender receives SYN ACK then sends ACK segment
+          starts sending data imediately after ACK segment
+        connection is established when receiver receives ACK segment
+          receiver must wait for ACK before sending any data to sender
+      process syncronizes the sequence numbers for the connection
+    Connection State
+      CLOSED - client
+        no connection
+      LISTEN - server
+        no connection, receiver waits for a SYN segment
+      SYN-SENT - client
+        no connection, sender has sent SYN segment but hasnt gotten response
+      SYN-RECEIVED - server
+        no connection, receiver received SYN, sends back SYN ACK segment
+      ESTABLISHED
+        client - received SYN ACK, sends ACK, then starts sending data
+        server - received ACK, connection established, can send data
+    Flow Control
+      mechanism to prevent sneder from overloading receiver
+      receiver buffers data waiting to be processed
+      WINDOW
+        amount of data a host is willing to accept
+        from TCP header
+        can change over course of connection
+        both sides of a connection tell each other window size
+      Congestion Avoidance
+        newtorks can only handle so much data
+        excess data gets dropped
+        routers buffer incoming IP packets but drop them once buffer is full
+        TCP reduces window size if lots of retransmission is happening
+    TCP Downsides
+      latency
+        handshake process
+        Head-of-Line blocking (HOL)
+          one delayed message prevents all that follow from being processed
+  UPD - User Datagram Protocol
+    does nothing to handle unreliability, flow control, delivery order, ...
+      chooses lack of latency over reliability
+    conectionless protocol
+    Datagram - PDU for a UDP
+    Header
+      source port
+      desination port
+      length
+      checksum
+    application layer may add some of the services TCP has
+      UDP becomes a base template that the application layer builds from
+
+Server
+  3 primary pieces
+    Web server
+      responds to requests for static assets
+      Files, images, css, javascript, ...
+    Application Server
+      where more complicated rewuests are handled
+      server side code, application and business logic
+    Data Store
+      consulted by the application server for data
+      can be just a file or a store of key/value pairs
+
+URL vs URI
+  URI is more general
+    a sequence of characters that identifies a resouce
+    a URL is a URI
+  URL
+    identifies a resource and where to find it
+    is a subset of URI
+
+Scheme vs Protocol
+  Scheme
+    is in a URL
+    before the ://
+    identifies what protocol should be used to access the resource
+    refers to a protocol in terms of a family of protocols.
+      referrs to `http` rather than `HTTP 1.0` or `HTTP 1.1`
+    Within the context of a URI
+      a specification for assigning identifiers within that schene
+    written in lowercase -- `http`
+  Protocol
+    the system of rules that defines how the message is transfered
+      specific -- `HTTP 1.0` not just `http`
+    written in upper case -- `HTTP`
+
+URL and File Path
+  URLs used to just represent a location of a resource
+    http://website.com/path/to/file.html
+  Most of the web is now dynamicly generated
+    server combines templates with stored data to produce HTML for http body
+      some services use client-side frameworks
+        http resopnse will just have data
+        client side will process to produce HTML
+    the URL is not neccesarily a path to the resource
+      logic in the server side determines what to send back
+      might have no relation to the server side file structure
+      will usually use URL pattern matching
+
+
