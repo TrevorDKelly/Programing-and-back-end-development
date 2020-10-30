@@ -11,21 +11,27 @@ Protocols
   address different aspects of communication
     transer of messages between applications - TCP & UDP
     structure of messages - HTTP
+  Addressed the same aspect of communication but in different ways
+    TCP vs UDP
+
+Router
+  Network devices that route network traffic
+  gateways into and out of a network
 
 Layered System
   two models
     OSI    - devides layers in terms of the functions they provide
     TCP/IP - devides layers by the scope of communication
 
-        OSI             TCP/IP
-                  ___
-      Application
-      Presentation    Application
-      Session     ___
-      Transport   ___ Transport
-      Network     ___ Internet
-      Data Link       Link
-      Physical    ___
+        OSI        |    TCP/IP
+                  _|_
+      Application  |
+      Presentation |  Application
+      Session     _|_
+      Transport   _|_ Transport
+      Network     _|_ Internet
+      Data Link    |  Link
+      Physical    _|_
 
   lower layers serve higher layers
     data is encapsulated
@@ -95,11 +101,14 @@ Link/Data Link layer
           pause in signal between transmission of frames
   MAC Address
     Every network enabled device has a unique MAC Address
-  Switch
-    Keeps record of MAC addresses on the network
-    sends frames only to desination
 
 Internet/Network Layer
+  Primarily concerned with communication between hosts on different networks
+  IP protocol is the dominant protocol at this layer
+    IP protocol PDUs are called Packets
+    packets:
+      header
+        Version - IPv4, IPv6
   Primarily concerned with communication between hosts on different networks
   IP protocol is the dominant protocol at this layer
     IP protocol PDUs are called Packets
@@ -145,7 +154,7 @@ Internet/Network Layer
 Transport Layer
   Multiplexing
     transmitting multiple signals over a single channel
-    Demiltiplexing is the oppisite process
+    Demultiplexing is the oppisite process
     at the physical layer
       a fiberoptic cable sending sygnals at different angles of refraction
       radio waves at different frequencies
@@ -211,6 +220,7 @@ Transport Layer
         maximum number of messages that can be in a pipline
         set by the sender
       More efficient use of bandwidth
+
   TCP - Transmission Control Protocol
     Connection oriented protocol
     provides reliable data trasnfer
@@ -330,4 +340,123 @@ URL and File Path
       might have no relation to the server side file structure
       will usually use URL pattern matching
 
+TLS
+  Transport Layer Security
+  Session layer protocol
+  Previously called SSL(Secure Soccet Layer)
+  Most recent version is TLS 1.3
+  three important services it provies
+    Encryption
+      encoding a message so only those with means to decode can read it
+    Authentication
+      verifies the identity of a party in the message exchange
+    Integrity
+      process to detect if a message has been interfered with or faked
+  Uses both Symetric and Asymmetric Key Encryption
+    a Symmetric Key is sent using Asymmetric Key Incription
+    done using the TLS Handshake
+  Assumes TCP is being used at the transport layer
 
+Symmetric Key Encryption
+  sender and receiver use the same key to decrypt a message
+  they key needs to be decided on through other means
+
+Asymmetric Key Encryption
+  also known as Public Key Encryption
+  Uses a pair of keys
+    Public key is used to encrypt a message
+    Private Key is used to decrypt it
+
+TLS Handshake
+  uses asymmetric key encription to agree on a symetric key to use
+  assumes TCP is being used at the transport layer
+  takes place after the TCP Handshake
+  3 main things
+    agrees what version of TLS to use
+    Agree on a Cipher Suite
+    enable exchange of symmetric keys
+  Process
+    ClientHello
+      sent immediately after the TCP ACK
+      has maximim version of the TLS protocol, cipher suites client has
+    ServerHello
+      after receiving ClientHello
+      sets protocol version and Cipher Suite
+      sends server certificate which has server's public key
+      ServerHelloDone marker - says server's done with its part of handshake
+    ClientKeyExchange
+      after client receives ServerHelloDone
+      Pre-master Secret
+        encripted with the server's public key
+        used along with other parameters from the cipher suite
+          generates the symmetric key
+      ChangeCipherSpec
+        sent by client
+        tells server to start using the symmetric key
+      Finished tag
+        client telling server it is done with handshake
+    Server sends ChangeCipherSpec and Finished flags
+  Adds latency
+    two rounds of back and forth
+
+DTLS - Datagram Treansport Layer Security
+  based on TLS
+  used when transport layer uses UDP
+
+Cipher Suites
+  a set of ciphers
+  Cipher
+    a cryptographic algorithm
+    a set of steps for perfoming encryption, decription, and related tasks
+  TLS uses different ciphers for different aspects
+    establishing and maintaining connection
+    key exchange
+    authentication, key encription, checking message integrity, ...
+  decided during TLS Handshake
+    client give what algorithms it supports for each task durung ClientHello
+    server chooses which to use from what it also supports
+
+TLS Authentication
+  Server sends a certificate during the TLS Handshake
+    Identifies server and sends its public key
+  Server also sends a signature
+    data encrypted with the private key
+    can be decrypted with the public key
+      proves that the sender is legit because it has the private key
+  Certificates
+    created by Certificate Authorities - CAs
+    CAs
+      verify the part requesting the certificate is who they say they are
+        CA decides how this is done
+        can be a file on located on the server
+      digitally sign the certificate
+        asymmetric key encription like a server's signaure
+    Intermediate and Root CAs
+      Root CAs authenticate Intermediate CAs
+      intermediate CAs authenticate domains
+      Client software like browsers store these CAs and their info
+        have their public key to verify their signature
+      Root CAs are kept very secure
+        certificate they issue rely on trust in the CA
+
+TLS Integrity
+  TLS PDU
+    Header
+      content type, TLS Version, Length
+    Body
+      Data Payload
+    Trailer
+      MAC
+        Message Authentication Code
+          No relation to MAC Addresses
+        Similar to a checksum from other PDUs
+        Checks that the message has not been tampered with in transit
+        Done thru a hashing algorithm
+          sender creates a digest of the data payload
+            small amount of data derived from the actuall data
+            created using hashing algorithm and hash value
+              deciced with the cipher suite in the TLS Handshake
+          sender encrypts the data with the symmetric key
+            encapsulates it into a TLS Record
+            passes it to the Transpirt layer to be sent
+          Receiver decrypts message

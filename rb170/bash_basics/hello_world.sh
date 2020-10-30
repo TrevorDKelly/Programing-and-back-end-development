@@ -2,7 +2,8 @@
 
 echo 'Hello World!'
 
-if true
-then
-  echo 'True'
-fi
+add_two () {
+ echo (($1+2))
+}
+
+add_two 2

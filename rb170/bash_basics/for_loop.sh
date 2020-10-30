@@ -5,4 +5,4 @@ do
   echo $number
 done
 
-echo $list
+echo $numbers
