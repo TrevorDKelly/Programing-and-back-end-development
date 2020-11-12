@@ -1,0 +1,14 @@
+<html>
+<body>
+
+  <main>
+    <ul>
+      <% @files.each do |file, extention| %>
+        <li><a href="public/<%= file %>.<%= extention %>"><%= file %></a></li>
+      <% end %>
+    </ul>
+    <a href="<%= @link %>">Reverse Link Order</a>
+  </main>
+
+</body>
+</html>

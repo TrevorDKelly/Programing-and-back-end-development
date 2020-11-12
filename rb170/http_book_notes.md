@@ -60,6 +60,7 @@ URL
       all info is visable therefore unsecure
   URL encoding
     some characters need to be escaped to be added to a URL
+    may not be in the standard ASCII Character Set
     unsafe because they can be missrepresented
       `% space ! + # < > { } [ ] ~` and others
     unsafe because they have a special meaning in URLs
